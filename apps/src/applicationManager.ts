@@ -1,20 +1,26 @@
 import {OnPremisesPublishing} from "./onPremisesPublishing.js";
+import {errorHandler} from "./errorHandler.js";
+import {findExistingServicePrincipal} from "./servicePrincipalManager.js";
+import * as process from "process";
 
-async function errorHandler(when: string, result: Response) {
-    if (!result.ok) {
-        console.log(`Error ${when}`, result.status)
-        console.log(result.statusText)
-        console.log(await result.json())
-        // @ts-ignore
-        process.exit(1)
-    }
+export type ApplicationAndServicePrincipalId = {
+    applicationId: string,
+    servicePrincipalObjectId: string
 }
 
-export async function createApplication({token, displayName}: { token: string, displayName: string }): Promise<string> {
-    const id = await findExistingApplication({token, displayName})
-    if (id) {
-        console.log('Found existing application', displayName, id)
-        return id
+export async function createApplication({token, displayName}: { token: string, displayName: string }): Promise<ApplicationAndServicePrincipalId> {
+    const applicationId = await findExistingApplication({token, displayName})
+    if (applicationId) {
+        console.log('Found existing application', displayName, applicationId)
+
+        const servicePrincipalObjectId = await findExistingServicePrincipal({token, displayName})
+
+        if (!servicePrincipalObjectId) {
+            console.log(`Found application ${displayName} but no service principal, aborting`)
+            process.exit(1)
+        }
+
+        return {applicationId, servicePrincipalObjectId}
     }
 
     console.log('Creating application', displayName)
@@ -34,7 +40,10 @@ export async function createApplication({token, displayName}: { token: string, d
 
     await waitTillApplicationExists({token, appId: body.application.id});
 
-    return body.application.id
+    return {
+        applicationId: body.application.id,
+        servicePrincipalObjectId: body.servicePrincipal.id
+    }
 
 }
 

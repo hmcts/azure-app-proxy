@@ -22,6 +22,7 @@ function defaultOnPremisesFlags(): {
         isSecureCookieEnabled: true,
         isTranslateHostHeaderEnabled: true,
         isTranslateLinksInBodyEnabled: false,
+
     }
 }
 
@@ -36,6 +37,8 @@ export async function loadApps(): Promise<Application[]> {
         (app: any) => {
             const application: Application = {
                 name: app.name,
+                appRoleAssignmentRequired: app.userAssignmentRequired === undefined ? true : app.userAssignmentRequired,
+                appRoleAssignments: app.appRoleAssignments === undefined ? [] : app.appRoleAssignments,
                 onPremisesPublishing: {
                     externalUrl: app.externalUrl,
                     internalUrl: app.internalUrl,
