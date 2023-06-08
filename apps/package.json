@@ -9,9 +9,11 @@
     "do-it": "./run.sh"
   },
   "dependencies": {
-    "@azure/identity": "^3.2.2"
+    "@azure/identity": "^3.2.2",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4",
     "@types/node": "^20.2.5",
     "typescript": "^5.1.3"
   }

@@ -17,6 +17,7 @@ export async function createApplication({token, displayName}: { token: string, d
         return id
     }
 
+    console.log('Creating application', displayName)
     const result = await fetch('https://graph.microsoft.com/v1.0/applicationTemplates/8adf8e6e-67b2-4cf2-a259-e3dc5476c621/instantiate', {
         method: 'POST',
         headers: {
@@ -30,8 +31,6 @@ export async function createApplication({token, displayName}: { token: string, d
 
     const body = await result.json()
     await errorHandler('creating application', result);
-
-    console.log(body)
 
     await waitTillApplicationExists({token, appId: body.application.id});
 

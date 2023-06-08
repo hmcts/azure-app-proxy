@@ -1,0 +1,7 @@
+apps:
+  - name: "My app101"
+    externalUrl: 'https://c101ontosoiwaapp11-1dwnh4.msappproxy.net'
+    internalUrl: 'https://rees-on-bau101.sandbox.platform.hmcts.net'
+  - name: "My app102"
+    externalUrl: 'https://c102ontosoiwaapp11-1dwnh4.msappproxy.net'
+    internalUrl: 'https://rees-on-bau102.sandbox.platform.hmcts.net'
