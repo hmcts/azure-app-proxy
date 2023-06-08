@@ -28,7 +28,7 @@ resource "azurerm_subnet" "this" {
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
-  source               = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=remove-default-disk"
+  source               = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
 
   vm_type              = "windows"
   vm_name              = "${var.product}-${var.env}"
