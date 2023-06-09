@@ -13,14 +13,14 @@ license?
 
 - [ ] SSL certificate
 - [ ] DNS to read from yaml file
-- [ ] Schema for yaml file
+- [x] Schema for yaml file
 - [ ] Possibly allow setting boolean values on per app basic if required
 - [ ] README
 - [ ] Move to own repo?
 - [ ] Tests
 - [ ] CI/CD
 - [ ] Publish to npm registry
-- [ ] Linting
+- [x] Linting
 - [ ] Blog
 - [x] Logo
 - [] Visible to users

@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "module": "node16",
-    "strict": true,
-    "sourceMap": true
-  },
-  "include": ["src/**/*"]
-}

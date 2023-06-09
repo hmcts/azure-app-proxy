@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://platform.hmcts.net/azure-app-proxy-manager.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "apps"
+  ],
+  "properties": {
+    "apps": {
+      "type": "array",
+      "default": [],
+      "title": "The apps Schema",
+      "items": {
+        "type": "object",
+        "default": {},
+        "title": "A Schema",
+        "required": [
+          "name",
+          "externalUrl",
+          "internalUrl"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "title": "Name of the app, this should be human readable and unique. It will be displayed on https://myapps.microsoft.com.",
+            "examples": [
+              "Pact broker"
+            ]
+          },
+          "externalUrl": {
+            "type": "string",
+            "default": "",
+            "title": "The published external url for the application. This is the url that will be used to access the application.",
+            "examples": [
+              "https://my-external-facing-url.domain.com"
+            ]
+          },
+          "logoUrl": {
+            "type": "string",
+            "default": "",
+            "title": "A URL for fetching a logo for the application. This will be displayed on https://myapps.microsoft.com.",
+            "examples": [
+              "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png"
+            ]
+          },
+          "appRoleAssignments": {
+            "type": "array",
+            "default": [],
+            "title": "A list of Azure AD groups that will be assigned to the application. It's recommended to assign groups even if userAssignmentRequired is set to false as otherwise they won't show up on https://myapps.microsoft.com.",
+            "items": {
+              "type": "string",
+              "default": "",
+              "title": "An Azure AD security group display name",
+              "examples": [
+                "Developers"
+              ]
+            },
+            "examples": [
+              ["Developers"]
+            ]
+          },
+          "internalUrl": {
+            "type": "string",
+            "default": "",
+            "title": "The internal url of the application.",
+            "examples": [
+              "https://my-internal-url.internal.my-domain"
+            ]
+          },
+          "userAssignmentRequired": {
+            "type": "boolean",
+            "default": false,
+            "title": "The userAssignmentRequired Schema",
+            "examples": [
+              true
+            ]
+          }
+        },
+        "examples": [{
+          "name": "My app101",
+          "externalUrl": "https://my-test-app.app-proxy-poc.sandbox.platform.hmcts.net",
+          "logoUrl": "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png",
+          "appRoleAssignments": [
+            "Test app"
+          ],
+          "internalUrl": "https://rees-on-bau101.sandbox.platform.hmcts.net",
+          "userAssignmentRequired": true
+        }]
+      },
+      "examples": [
+        [{
+          "name": "My app101",
+          "externalUrl": "https://my-test-app.app-proxy-poc.sandbox.platform.hmcts.net",
+          "logoUrl": "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png",
+          "appRoleAssignments": [
+            "Test app"
+          ],
+          "internalUrl": "https://rees-on-bau101.sandbox.platform.hmcts.net",
+          "userAssignmentRequired": true
+        }]
+      ]
+    }
+  },
+  "examples": [{
+    "apps": [{
+      "name": "My app101",
+      "externalUrl": "https://my-test-app.app-proxy-poc.sandbox.platform.hmcts.net",
+      "logoUrl": "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png",
+      "appRoleAssignments": [
+        "Test app"
+      ],
+      "internalUrl": "https://rees-on-bau101.sandbox.platform.hmcts.net",
+      "userAssignmentRequired": true
+    }]
+  }]
+}
