@@ -8,7 +8,10 @@ export type ApplicationAndServicePrincipalId = {
     servicePrincipalObjectId: string
 }
 
-export async function createApplication({token, displayName}: { token: string, displayName: string }): Promise<ApplicationAndServicePrincipalId> {
+export async function createApplication({token, displayName}: {
+    token: string,
+    displayName: string
+}): Promise<ApplicationAndServicePrincipalId> {
     const applicationId = await findExistingApplication({token, displayName})
     if (applicationId) {
         console.log('Found existing application', displayName, applicationId)
@@ -47,7 +50,10 @@ export async function createApplication({token, displayName}: { token: string, d
 
 }
 
-export async function findExistingApplication({token, displayName}: {token: string, displayName: string}): Promise<string | undefined> {
+export async function findExistingApplication({token, displayName}: {
+    token: string,
+    displayName: string
+}): Promise<string | undefined> {
     const result = await fetch(`https://graph.microsoft.com/v1.0/applications?$filter=displayName eq '${displayName}'&$top=1&$select=id`, {
         method: 'GET',
         headers: {
@@ -131,6 +137,30 @@ export async function updateApplicationConfig({token, appId, externalUrl}: {
     })
 
     await errorHandler('updating application config', result)
+}
+
+export async function setLogo({token, appId, logoUrl}: {
+    appId: string;
+    logoUrl: string;
+    token: string
+}) {
+    if (logoUrl) {
+        const logo = await fetch(logoUrl)
+
+        const contentType = logo.headers.get('content-type')
+        const data = await logo.blob()
+
+        const result = await fetch(`https://graph.microsoft.com/v1.0/applications/${appId}/logo`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': contentType || 'image/png'
+            },
+            body: data
+        })
+
+        await errorHandler('setting logo', result)
+    }
 }
 
 export async function setOnPremisesPublishing({token, appId, onPremisesPublishing}: {

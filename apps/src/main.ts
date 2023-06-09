@@ -2,7 +2,7 @@
 import {DefaultAzureCredential} from "@azure/identity";
 import {Application} from "./application.js";
 import {
-    createApplication,
+    createApplication, setLogo,
     setOnPremisesPublishing,
     updateApplicationConfig
 } from "./applicationManager.js";
@@ -26,7 +26,12 @@ const {token} = await credential.getToken('https://graph.microsoft.com/.default'
 for await (const app of apps) {
     const {applicationId, servicePrincipalObjectId} = await createApplication({token, displayName: app.name});
 
-    await updateApplicationConfig({token, externalUrl: app.onPremisesPublishing.externalUrl, appId: applicationId})
+    await updateApplicationConfig({
+        token,
+        externalUrl: app.onPremisesPublishing.externalUrl, appId: applicationId
+    })
+
+    await setLogo({token, appId: applicationId, logoUrl: app.logoUrl})
     await setOnPremisesPublishing({token, appId: applicationId, onPremisesPublishing: app.onPremisesPublishing})
 
     await setUserAssignmentRequired({

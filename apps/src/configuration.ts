@@ -37,6 +37,7 @@ export async function loadApps(): Promise<Application[]> {
         (app: any) => {
             const application: Application = {
                 name: app.name,
+                logoUrl: app.logoUrl,
                 appRoleAssignmentRequired: app.userAssignmentRequired === undefined ? true : app.userAssignmentRequired,
                 appRoleAssignments: app.appRoleAssignments === undefined ? [] : app.appRoleAssignments,
                 onPremisesPublishing: {

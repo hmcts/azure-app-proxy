@@ -16,7 +16,7 @@ export async function setUserAssignmentRequired({token, objectId, assignmentRequ
         })
     })
 
-    await errorHandler('updating application config', result)
+    await errorHandler('updating servicePrincipal config', result)
 }
 
 export async function findExistingServicePrincipal({token, displayName}: {
@@ -70,6 +70,21 @@ async function getGroupId(objectId: string, token: string) {
     return body.value[0].id;
 }
 
+async function isAppRoleAssignedToGroup({groupId, objectId, token}: {groupId: string, objectId: string, token: string}) {
+    const result = await fetch(`https://graph.microsoft.com/v1.0/groups/${groupId}/appRoleAssignments?$filter=resourceId eq ${objectId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    })
+
+    await errorHandler('finding if app role is already assigned', result)
+
+    const body = await result.json()
+
+    return body.value.length === 1;
+}
+
 async function assignGroup({group, token, objectId, appRoleId}: {
     group: string,
     token: string,
@@ -78,23 +93,29 @@ async function assignGroup({group, token, objectId, appRoleId}: {
 }) {
     const groupId = await getGroupId(group, token);
 
-    const appRoleAssignmentsResult = await fetch(`https://graph.microsoft.com/beta/servicePrincipals/${objectId}/appRoleAssignments`, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            principalId: groupId,
-            principalType: "Group",
-            appRoleId,
-            resourceId: objectId,
+    const appRoleAssignedAlready = await isAppRoleAssignedToGroup({groupId, objectId, token});
+
+    if (appRoleAssignedAlready) {
+        console.log('Group already assigned', group)
+    } else {
+        const appRoleAssignmentsResult = await fetch(`https://graph.microsoft.com/beta/servicePrincipals/${objectId}/appRoleAssignments`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                principalId: groupId,
+                principalType: "Group",
+                appRoleId,
+                resourceId: objectId,
+            })
         })
-    })
 
-    await errorHandler('assigning app role assignment', appRoleAssignmentsResult)
+        await errorHandler('assigning app role assignment', appRoleAssignmentsResult)
 
-    console.log('Assigned group', group)
+        console.log('Assigned group', group)
+    }
 }
 
 export async function assignGroups({token, objectId, groups}: { groups: string[]; objectId: string; token: string }) {

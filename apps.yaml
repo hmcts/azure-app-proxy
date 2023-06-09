@@ -3,6 +3,7 @@
 apps:
   - name: "My app101"
     externalUrl: 'https://my-test-app.app-proxy-poc.sandbox.platform.hmcts.net'
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
     appRoleAssignments:
       - Test app
     internalUrl: 'https://rees-on-bau101.sandbox.platform.hmcts.net'
