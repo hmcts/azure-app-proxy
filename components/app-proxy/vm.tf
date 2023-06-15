@@ -19,7 +19,7 @@ resource "random_password" "this" {
 }
 
 resource "azurerm_subnet" "this" {
-  name                 = "app-proxy"
+  name = "app-proxy"
 
   address_prefixes     = ["10.99.73.0/25"]
   resource_group_name  = "mgmt-vpn-2-mgmt"
@@ -28,7 +28,7 @@ resource "azurerm_subnet" "this" {
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
-  source               = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
 
   vm_type              = "windows"
   vm_name              = "${var.product}-${var.env}"
@@ -45,17 +45,17 @@ module "virtual_machine" {
   privateip_allocation = "Dynamic"
 
   accelerated_networking_enabled = true
-  tags                 = module.tags.common_tags
+  tags                           = module.tags.common_tags
 }
 
 // TODO switch to extension in terraform-module-vm-bootstrap when enabling splunk / tenable
 resource "azurerm_virtual_machine_extension" "this" {
-  name                       = "app-proxy-onboarding"
-  virtual_machine_id         = module.virtual_machine.vm_id
-  publisher                  = "Microsoft.Compute"
-  type                       = "CustomScriptExtension"
-  type_handler_version       = "1.9"
-  protected_settings         = <<PROTECTED_SETTINGS
+  name                 = "app-proxy-onboarding"
+  virtual_machine_id   = module.virtual_machine.vm_id
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.9"
+  protected_settings   = <<PROTECTED_SETTINGS
     {
       "fileUris": ["${var.script_url}"],
       "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File bootstrap-app-proxy.ps1 -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
@@ -78,6 +78,6 @@ data "external" "this" {
 
 # TODO remove and store in a vault
 output "vm_password" {
-  value = random_password.this.result
+  value     = random_password.this.result
   sensitive = true
 }
