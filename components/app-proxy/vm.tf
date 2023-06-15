@@ -48,6 +48,34 @@ module "virtual_machine" {
   tags                 = module.tags.common_tags
 }
 
+// TODO switch to extension in terraform-module-vm-bootstrap when enabling splunk / tenable
+resource "azurerm_virtual_machine_extension" "this" {
+  name                       = "app-proxy-onboarding"
+  virtual_machine_id         = module.virtual_machine.vm_id
+  publisher                  = "Microsoft.Compute"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.9"
+  protected_settings         = <<PROTECTED_SETTINGS
+    {
+      "fileUris": ["${var.script_url}"],
+      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File bootstrap-app-proxy.ps1 -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
+    }
+    PROTECTED_SETTINGS
+
+  tags = module.tags.common_tags
+}
+
+variable "script_url" {
+  default = "https://gist.githubusercontent.com/timja/d87f7bf7e01ac247e962bd74b5ecec65/raw/6b35e6a78dccdb7515fa9a81bc2455321ce36d7e/bootstrap-app-proxy.ps1"
+}
+
+data "azurerm_client_config" "this" {}
+
+data "external" "this" {
+  program = ["bash", "${path.module}/get-access-token.sh"]
+}
+
+
 # TODO remove and store in a vault
 output "vm_password" {
   value = random_password.this.result
