@@ -66,7 +66,7 @@ resource "azurerm_virtual_machine_extension" "this" {
 }
 
 variable "script_url" {
-  default = "https://gist.githubusercontent.com/timja/d87f7bf7e01ac247e962bd74b5ecec65/raw/6b35e6a78dccdb7515fa9a81bc2455321ce36d7e/bootstrap-app-proxy.ps1"
+  default = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/HEAD/components/app-proxy/Bootstrap-Application-Proxy.ps1"
 }
 
 data "azurerm_client_config" "this" {}
