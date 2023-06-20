@@ -6,6 +6,7 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
+
 resource "azurerm_resource_group" "this" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
@@ -13,71 +14,48 @@ resource "azurerm_resource_group" "this" {
   tags = module.tags.common_tags
 }
 
-# TODO store in a vault
-resource "random_password" "this" {
-  length = 30
+resource "azurerm_subnet" "app_proxy_subnet" {
+  name                 = "app-proxy"
+  address_prefixes     = ["10.99.73.0/25"]
+  resource_group_name  = var.app_proxy_subnet_rg
+  virtual_network_name = "mgmt-vpn-2-vnet"
 }
 
-resource "azurerm_subnet" "this" {
-  name = "app-proxy"
+data "azurerm_key_vault" "reform_mgmt_kv" {
+  name                = "ReformMgmtKeyVault"
+  resource_group_name = "reformMgmtCoreRG"
+}
 
-  address_prefixes     = ["10.99.73.0/25"]
-  resource_group_name  = "mgmt-vpn-2-mgmt"
-  virtual_network_name = "mgmt-vpn-2-vnet"
+data "azurerm_key_vault_secret" "my_secret" {
+  key_vault_id = data.azurerm_key_vault.reform_mgmt_kv.id
+  name         = "azure-app-proxy-vm-password"
 }
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
-  source = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
-
-  vm_type              = "windows"
-  vm_name              = "${var.product}-${var.env}"
+  source               = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-14061-bootstrap-changes"
+  count                = 3
+  vm_type              = var.os_type
+  vm_name              = "${var.product}-${var.env}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
-  vm_admin_password    = random_password.this.result
-  vm_subnet_id         = azurerm_subnet.this.id
-  vm_publisher_name    = "MicrosoftWindowsServer"
-  vm_offer             = "WindowsServer"
-  vm_sku               = "2022-datacenter-azure-edition-core"
-  vm_size              = "Standard_D2ds_v5"
-  vm_version           = "latest"
-  vm_availabilty_zones = "1"
+  vm_admin_password    = data.azurerm_key_vault_secret.my_secret.value
+  vm_subnet_id         = azurerm_subnet.app_proxy_subnet.id
+  vm_publisher_name    = var.vm_publisher_name
+  vm_offer             = var.vm_offer
+  vm_sku               = var.vm_sku
+  vm_size              = var.vm_size
+  vm_version           = var.vm_version
+  vm_availabilty_zones = var.vm_availabilty_zones
+  // Required to pass custom script to terraform-module-vm-bootstrap
+  install_app_proxy            = true
+  custom_script_extension_name = "app-proxy-onboarding-${count.index}"
+  additional_script_uri        = var.script_url
+  additional_script_name       = var.additional_script_name
 
-  privateip_allocation = "Dynamic"
-
+  privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
   tags                           = module.tags.common_tags
 }
 
-// TODO switch to extension in terraform-module-vm-bootstrap when enabling splunk / tenable
-resource "azurerm_virtual_machine_extension" "this" {
-  name                 = "app-proxy-onboarding"
-  virtual_machine_id   = module.virtual_machine.vm_id
-  publisher            = "Microsoft.Compute"
-  type                 = "CustomScriptExtension"
-  type_handler_version = "1.9"
-  protected_settings   = <<PROTECTED_SETTINGS
-    {
-      "fileUris": ["${var.script_url}"],
-      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File bootstrap-app-proxy.ps1 -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
-    }
-    PROTECTED_SETTINGS
-
-  tags = module.tags.common_tags
-}
-
-variable "script_url" {
-  default = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/HEAD/components/app-proxy/Bootstrap-Application-Proxy.ps1"
-}
-
 data "azurerm_client_config" "this" {}
 
-data "external" "this" {
-  program = ["bash", "${path.module}/get-access-token.sh"]
-}
-
-
-# TODO remove and store in a vault
-output "vm_password" {
-  value     = random_password.this.result
-  sensitive = true
-}

@@ -1,0 +1,73 @@
+resources:
+  repositories:
+  - repository: cnp-azuredevops-libraries
+    type: github
+    ref: refs/heads/master
+    name: hmcts/cnp-azuredevops-libraries
+    endpoint: 'hmcts'
+
+
+variables:
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: 'ubuntu-latest'
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: product
+    value: app-proxy
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+
+parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+    - plan
+    - apply
+
+  - name: environment_components
+    type: object
+    default:
+    - deployment: 'azure_app_proxy'
+      # For now - until  happy with tf changes then moving to production
+      environment: 'sbox'
+      component: 'app-proxy'
+      service_connection: 'DCD-CFT-Sandbox'
+      dependsOn: 'Precheck'
+
+stages:
+  - stage: Precheck
+    jobs:
+      - job:
+        displayName: Precheck
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: ${{ parameters.kvConnectedServiceName }}
+              overrideAction: ${{ parameters.overrideAction }}
+  
+  - ${{ each deployment in parameters.environment_components }}:
+    - stage: ${{ deployment.deployment }}
+      dependsOn: ${{ deployment.dependsOn }}
+      jobs:
+        - job: TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ deployment.environment }}
+              component: ${{ deployment.component }}
+              serviceConnection: ${{ deployment.service_connection }}
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+              product: ${{ variables.product }}

@@ -1,0 +1,1 @@
+app_proxy_subnet_rg = "mgmt-vpn-2-sbox"
