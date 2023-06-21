@@ -18,7 +18,7 @@ resource "azurerm_subnet" "app_proxy_subnet" {
   name                 = "app-proxy"
   address_prefixes     = ["10.99.73.0/25"]
   resource_group_name  = var.app_proxy_subnet_rg
-  virtual_network_name = "mgmt-vpn-2-vnet"
+  virtual_network_name = var.app_proxy_subnet_name
 }
 
 data "azurerm_key_vault" "reform_mgmt_kv" {
@@ -33,10 +33,11 @@ data "azurerm_key_vault_secret" "my_secret" {
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
-  source               = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-14061-bootstrap-changes"
-  count                = 3
-  vm_type              = var.os_type
-  vm_name              = "${var.product}-${var.env}-${count.index}"
+  source  = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
+  count   = var.vm_count
+  vm_type = var.os_type
+  # 15 Char name limit
+  vm_name              = "${var.product}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
   vm_admin_password    = data.azurerm_key_vault_secret.my_secret.value
   vm_subnet_id         = azurerm_subnet.app_proxy_subnet.id
@@ -46,11 +47,30 @@ module "virtual_machine" {
   vm_size              = var.vm_size
   vm_version           = var.vm_version
   vm_availabilty_zones = var.vm_availabilty_zones
-  // Required to pass custom script to terraform-module-vm-bootstrap
-  install_app_proxy            = true
-  custom_script_extension_name = "app-proxy-onboarding-${count.index}"
-  additional_script_uri        = var.script_url
-  additional_script_name       = var.additional_script_name
+
+  # Splunk
+  install_splunk_uf   = var.install_splunk_uf
+  splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
+  splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
+  splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
+
+  # Dynatrace
+  install_dynatrace_oneagent = var.install_dynatrace_oa
+  dynatrace_hostgroup        = var.dynatrace_hostgroup
+  dynatrace_server           = var.dynatrace_server
+  dynatrace_tenant_id        = var.dynatrace_tenant_id
+  dynatrace_token            = data.azurerm_key_vault_secret.token.value
+
+  # Tenable
+  nessus_install = true
+  nessus_server  = var.nessus_server
+  nessus_key     = data.azurerm_key_vault_secret.nessus_key.value
+  nessus_groups  = var.nessus_groups
+
+  # Custom app-proxy script
+  custom_script_extension_name = "app-proxy-onboarding-0${count.index}"
+  additional_script_uri        = var.additional_script_uri
+  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
@@ -59,3 +79,6 @@ module "virtual_machine" {
 
 data "azurerm_client_config" "this" {}
 
+data "external" "this" {
+  program = ["bash", "${path.module}/get-access-token.sh"]
+}
