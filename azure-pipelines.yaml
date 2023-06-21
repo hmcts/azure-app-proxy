@@ -27,10 +27,10 @@ parameters:
     values:
     - plan
     - apply
-    - name: kvConnectedServiceName
-      type: string
-      default: DCD-CFT-Sandbox
-      
+  - name: kvConnectedServiceName
+    type: string
+    default: DCD-CFT-Sandbox
+
   - name: environment_components
     type: object
     default:
