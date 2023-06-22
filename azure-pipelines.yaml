@@ -27,18 +27,18 @@ parameters:
     values:
     - plan
     - apply
+
   - name: kvConnectedServiceName
     type: string
-    default: OPS-APPROVAL-GATE-SBOX-ENVS-CFT
+    default: DCD-CFT-Sandbox
 
   - name: environment_components
     type: object
     default:
-    - deployment: 'azure_app_proxy'
-      # For now - until  happy with tf changes then moving to production
-      environment: 'sbox'
+    - deployment: 'azure_app_proxy_prod'
+      environment: 'production'
       component: 'app-proxy'
-      service_connection: 'OPS-APPROVAL-GATE-SBOX-ENVS-CFT'
+      service_connection: 'dcd-cftapps-prod'
       dependsOn: 'Precheck'
 
 stages:
