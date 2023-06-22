@@ -38,7 +38,7 @@ parameters:
     - deployment: 'azure_app_proxy_prod'
       environment: 'prod'
       component: 'app-proxy'
-      service_connection: 'dcd-cftapps-prod'
+      service_connection: 'Reform-CFT-Mgmt'
       dependsOn: 'Precheck'
 
 stages:
