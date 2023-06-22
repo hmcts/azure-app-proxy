@@ -8,14 +8,16 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "soc"
   features {}
-  subscription_id = "8ae5b3b6-0b12-4888-b894-4cec33c92292"
+  skip_provider_registration = true
+  subscription_id            = "8ae5b3b6-0b12-4888-b894-4cec33c92292"
 }
 
 # Provider for Dynatrace
 provider "azurerm" {
   alias = "cnp"
   features {}
-  subscription_id = var.cnp_vault_sub
+  skip_provider_registration = true
+  subscription_id            = var.cnp_vault_sub
 }
 
 terraform {
