@@ -36,7 +36,7 @@ parameters:
     type: object
     default:
     - deployment: 'azure_app_proxy_prod'
-      environment: 'production'
+      environment: 'prod'
       component: 'app-proxy'
       service_connection: 'dcd-cftapps-prod'
       dependsOn: 'Precheck'
