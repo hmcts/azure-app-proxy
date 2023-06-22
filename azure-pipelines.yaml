@@ -36,7 +36,7 @@ parameters:
     type: object
     default:
     - deployment: 'azure_app_proxy_prod'
-      environment: 'prod'
+      environment: 'mgmt'
       component: 'app-proxy'
       service_connection: 'Reform-CFT-Mgmt'
       dependsOn: 'Precheck'
