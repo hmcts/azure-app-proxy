@@ -29,7 +29,7 @@ parameters:
     - apply
   - name: kvConnectedServiceName
     type: string
-    default: DCD-CFT-Sandbox
+    default: OPS-APPROVAL-GATE-SBOX-ENVS-CFT
 
   - name: environment_components
     type: object
@@ -38,7 +38,7 @@ parameters:
       # For now - until  happy with tf changes then moving to production
       environment: 'sbox'
       component: 'app-proxy'
-      service_connection: 'DCD-CFT-Sandbox'
+      service_connection: 'OPS-APPROVAL-GATE-SBOX-ENVS-CFT'
       dependsOn: 'Precheck'
 
 stages:
