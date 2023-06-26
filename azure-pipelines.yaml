@@ -10,6 +10,8 @@ resources:
 variables:
   - name: timeoutInMinutes
     value: 60
+  - name: subscription
+    value: Reform-CFT-Mgmt
   - name: agentPool
     value: 'ubuntu-latest'
   - name: build
@@ -57,6 +59,25 @@ stages:
               serviceConnection: ${{ parameters.kvConnectedServiceName }}
               overrideAction: ${{ parameters.overrideAction }}
   
+  - task: AzureKeyVault@2
+    displayName: 'Fetch Login From Azure Key Vault'
+    inputs:
+      azureSubscription: ${{ variables.subscription }}
+      KeyVaultName: 'ReformMgmtKeyVault'
+      SecretsFilter: 'azure-app-proxy-user-password, azure-app-proxy-user-email'
+      RunAsPreJob: true
+
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: ${{ variables.subscription }}
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az login --username $(azure-app-proxy-user-email) --password $(azure-app-proxy-user-password)
+        TOKEN=$(az account get-access-token --resource-type 'aad-graph' --scope 'https://proxy.cloudwebappproxy.net/registerapp/user_impersonation')
+        echo "Retrieved user token, setting as env var..."
+        echo "##vso[task.setvariable variable=TOKEN;issecret=true]$TOKEN"
+
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
@@ -74,3 +95,5 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+              terraformEnvironmentVariables:
+                TF_VAR_user_token: $(TOKEN)

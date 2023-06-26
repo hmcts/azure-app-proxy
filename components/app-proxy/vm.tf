@@ -26,7 +26,7 @@ data "azurerm_key_vault" "reform_mgmt_kv" {
   resource_group_name = "reformMgmtCoreRG"
 }
 
-data "azurerm_key_vault_secret" "my_secret" {
+data "azurerm_key_vault_secret" "vm_admin_password" {
   key_vault_id = data.azurerm_key_vault.reform_mgmt_kv.id
   name         = "azure-app-proxy-vm-password"
 }
@@ -39,7 +39,7 @@ module "virtual_machine" {
   # 15 Char name limit
   vm_name              = "${var.product}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
-  vm_admin_password    = data.azurerm_key_vault_secret.my_secret.value
+  vm_admin_password    = data.azurerm_key_vault_secret.vm_admin_password.value
   vm_subnet_id         = azurerm_subnet.app_proxy_subnet.id
   vm_publisher_name    = var.vm_publisher_name
   vm_offer             = var.vm_offer
@@ -70,7 +70,7 @@ module "virtual_machine" {
   # Custom app-proxy script
   custom_script_extension_name = "app-proxy-onboarding-0${count.index}"
   additional_script_uri        = var.additional_script_uri
-  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
+  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${var.user_token}"
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
@@ -79,6 +79,6 @@ module "virtual_machine" {
 
 data "azurerm_client_config" "this" {}
 
-data "external" "this" {
-  program = ["bash", "${path.module}/get-access-token.sh"]
-}
+# data "external" "this" {
+#   program = ["bash", "${path.module}/get-access-token.sh"]
+# }

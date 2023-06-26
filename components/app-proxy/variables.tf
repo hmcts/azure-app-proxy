@@ -6,6 +6,10 @@ variable "location" {
 }
 
 # VM Configuration Block
+variable "user_token" {
+  sensitive   = true
+  description = "Short-Lived token for bootstrapping VM"
+}
 variable "os_type" {
   default     = "windows"
   description = "VM OS type, defaults to windows for app_proxy resources."
