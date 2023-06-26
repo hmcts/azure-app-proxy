@@ -59,7 +59,7 @@ module "virtual_machine" {
   dynatrace_hostgroup        = var.dynatrace_hostgroup
   dynatrace_server           = var.dynatrace_server
   dynatrace_tenant_id        = var.dynatrace_tenant_id
-  dynatrace_token            = data.azurerm_key_vault_secret.token.value
+  dynatrace_token            = data.azurerm_key_vault_secret.dynatrace_token.value
 
   # Tenable
   nessus_install = true

@@ -38,7 +38,7 @@ data "azurerm_key_vault" "cnp_vault" {
   name                = "infra-vault-${local.dynatrace_env}"
   resource_group_name = var.cnp_vault_rg
 }
-data "azurerm_key_vault_secret" "token" {
+data "azurerm_key_vault_secret" "dynatrace_token" {
   provider     = azurerm.cnp
   name         = "dynatrace-${local.dynatrace_env}-token"
   key_vault_id = data.azurerm_key_vault.cnp_vault.id

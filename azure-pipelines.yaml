@@ -92,6 +92,8 @@ stages:
           pool:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          variables:
+            token: $[ dependencies.Fetch_Login_Details_For_Token.outputs['UserLogin.TOKEN'] ]
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
@@ -102,4 +104,4 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               terraformEnvironmentVariables:
-                TF_VAR_user_token: $(TOKEN)
+                TF_VAR_user_token: $(token)
