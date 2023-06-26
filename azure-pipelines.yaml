@@ -58,9 +58,6 @@ stages:
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: ${{ parameters.kvConnectedServiceName }}
               overrideAction: ${{ parameters.overrideAction }}
-
-  - stage: 'Fetch_Login_Details_For_Token'
-    jobs:
       - job: 'UserLogin'
         displayName: 'Fetch Login From Azure Key Vault'
         steps:
@@ -93,7 +90,7 @@ stages:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           variables:
-            token: $[ dependencies.Fetch_Login_Details_For_Token.outputs['UserLogin.TOKEN'] ]
+            token: $[ dependencies.Precheck.outputs['UserLogin.TOKEN'] ]
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
