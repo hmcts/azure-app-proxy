@@ -78,7 +78,7 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                az login --username $(azure-app-proxy-user-email) --password $(azure-app-proxy-user-password)
+                az login --username $(azure-app-proxy-user-email) --password $(azure-app-proxy-user-password) --allow-no-subscriptions
                 TOKEN=$(az account get-access-token --resource-type 'aad-graph' --scope 'https://proxy.cloudwebappproxy.net/registerapp/user_impersonation')
                 echo "Retrieved user token, setting as env var..."
                 echo "##vso[task.setvariable variable=TOKEN;issecret=true]$TOKEN"
