@@ -78,7 +78,3 @@ module "virtual_machine" {
 }
 
 data "azurerm_client_config" "this" {}
-
-# data "external" "this" {
-#   program = ["bash", "${path.module}/get-access-token.sh"]
-# }
