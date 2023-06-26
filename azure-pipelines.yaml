@@ -59,7 +59,7 @@ stages:
               serviceConnection: ${{ parameters.kvConnectedServiceName }}
               overrideAction: ${{ parameters.overrideAction }}
 
-  - stage: 'Fetch login details for token'
+  - stage: 'Fetch_Login_Details_For_Token'
     jobs:
       - job:
         displayName: 'Fetch Login From Azure Key Vault'
