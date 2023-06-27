@@ -6,6 +6,16 @@ resource "azurerm_key_vault" "app_proxy_kv" {
   sku_name            = "standard"
 }
 
+data "azuread_service_principal" "aad_application" {
+  display_name = "DTS Bootstrap (sub:reform-cft-mgmt)"
+}
+
+resource "azurerm_role_assignment" "kv_role" {
+  scope                = azurerm_key_vault.app_proxy_kv.id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = data.azuread_service_principal.aad_application.object_id
+}
+
 resource "random_password" "this" {
   length = 30
 }
