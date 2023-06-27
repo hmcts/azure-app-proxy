@@ -18,6 +18,8 @@
 param ([Parameter(Mandatory)][string] $Token, [Parameter(Mandatory)][string]$TenantId)
 $ErrorActionPreference = "Stop"
 
+# Update-AzWvdHostPool -ResourceGroupName XXX -Name XXX -CustomRdpProperty targetisaadjoined:i:1
+
 curl.exe https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/DownloadConnectorInstaller -o installer.exe
 
 .\installer.exe REGISTERCONNECTOR="false" /q

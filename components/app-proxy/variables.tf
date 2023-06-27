@@ -8,6 +8,7 @@ variable "location" {
 # VM Configuration Block
 variable "user_token" {
   sensitive   = true
+  default     = ""
   description = "Short-Lived token for bootstrapping VM"
 }
 variable "os_type" {
@@ -43,8 +44,8 @@ variable "additional_script_name" {
 variable "app_proxy_subnet_rg" {
   default = "mgmt-vpn-2-mgmt"
 }
-variable "app_proxy_subnet_name" {
-  default = "mgmt-vpn-2-mgmt"
+variable "app_proxy_vnet_name" {
+  default = "mgmt-vpn-2-vnet"
 }
 variable "vm_count" {
   default = 3

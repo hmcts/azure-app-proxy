@@ -7,7 +7,7 @@ module "tags" {
 }
 
 
-resource "azurerm_resource_group" "this" {
+resource "azurerm_resource_group" "app_proxy_rg" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
 
@@ -18,17 +18,7 @@ resource "azurerm_subnet" "app_proxy_subnet" {
   name                 = "app-proxy"
   address_prefixes     = ["10.99.73.0/25"]
   resource_group_name  = var.app_proxy_subnet_rg
-  virtual_network_name = var.app_proxy_subnet_name
-}
-
-data "azurerm_key_vault" "reform_mgmt_kv" {
-  name                = "ReformMgmtKeyVault"
-  resource_group_name = "reformMgmtCoreRG"
-}
-
-data "azurerm_key_vault_secret" "vm_admin_password" {
-  key_vault_id = data.azurerm_key_vault.reform_mgmt_kv.id
-  name         = "azure-app-proxy-vm-password"
+  virtual_network_name = var.app_proxy_vnet_name
 }
 
 # TODO auto-register VMs in DNS with private dns autoregistration
@@ -38,7 +28,7 @@ module "virtual_machine" {
   vm_type = var.os_type
   # 15 Char name limit
   vm_name              = "${var.product}-${count.index}"
-  vm_resource_group    = azurerm_resource_group.this.name
+  vm_resource_group    = azurerm_resource_group.app_proxy_rg.name
   vm_admin_password    = data.azurerm_key_vault_secret.vm_admin_password.value
   vm_subnet_id         = azurerm_subnet.app_proxy_subnet.id
   vm_publisher_name    = var.vm_publisher_name
@@ -70,7 +60,7 @@ module "virtual_machine" {
   # Custom app-proxy script
   custom_script_extension_name = "app-proxy-onboarding-0${count.index}"
   additional_script_uri        = var.additional_script_uri
-  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${var.user_token}"
+  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
@@ -78,3 +68,11 @@ module "virtual_machine" {
 }
 
 data "azurerm_client_config" "this" {}
+
+data "external" "this" {
+  program = ["bash", "${path.module}/get-access-token.sh"]
+  query = {
+    username = data.azurerm_key_vault_secret.vm_user_email.value
+    password = data.azurerm_key_vault_secret.vm_user_password.value
+  }
+}
