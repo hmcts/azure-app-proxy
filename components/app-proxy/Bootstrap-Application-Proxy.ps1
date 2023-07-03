@@ -23,6 +23,7 @@ $ErrorActionPreference = "Stop"
 # Install az-cli (updates current version if already installed)
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
 
+Set-Alias -Name az -Value "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin\az.cmd"
 # Login as app-proxy user
 az login --username $Username --password $Password --allow-no-subscriptions
 # Get account token
