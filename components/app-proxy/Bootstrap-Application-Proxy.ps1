@@ -23,6 +23,24 @@ $ErrorActionPreference = "Stop"
 # Install az-cli (updates current version if already installed)
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
 
+$azInstalled = $false
+$azAttempts = 0
+
+while (-not $azInstalled) {
+    $attempts++
+    try {
+        az --version
+        $azInstalled = $true
+    } catch {
+        # Az CLI not installed yet, wait for a short while
+        Start-Sleep -Seconds 5
+        if ($azAttempts -gt 6) {
+            Write-Host "AZ Cli not installed after 30 seconds, exiting"
+            exit 1
+        }
+    }
+}
+
 # Login as app-proxy user
 az login --username $Username --password $Password --allow-no-subscriptions
 # Get account token
