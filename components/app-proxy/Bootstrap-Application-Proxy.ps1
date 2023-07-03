@@ -27,7 +27,7 @@ $azInstalled = $false
 $azAttempts = 0
 
 while (-not $azInstalled) {
-    $attempts++
+    $azAttempts++
     try {
         az --version
         $azInstalled = $true
