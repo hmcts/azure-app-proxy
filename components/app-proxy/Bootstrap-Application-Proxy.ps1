@@ -2,9 +2,11 @@
   .SYNOPSIS
   Fetches and installs AzureAD Application connector.
 
-  .PARAMETER Token
-  An AzureAD token with the applicaton administrator role or Directory.ReadWrite.All
-  It can be generated with "az account get-access-token --resource-type aad-graph --scope https://proxy.cloudwebappproxy.net/registerapp/user_impersonation"
+  .PARAMETER Username
+  Username of the account to run az login with and fetch the user_impersonation token.
+
+  .PARAMETER Password
+  Password of the account to run az login with and fetch the user_impersonation token.
 
   .PARAMETER TenantId
   The tenant to install AzureAD Application connector to.
@@ -13,10 +15,18 @@
   None. .\Bootstrap-Application-Proxy.ps1 does not generate any output.
 
   .EXAMPLE
-  PS> .\Bootstrap-Application-Proxy.ps1 -TenantId b0294656-c63d-4c49-bd13-8f1153c62cda -Token $Token
+  PS> .\Bootstrap-Application-Proxy.ps1 -TenantId b0294656-c63d-4c49-bd13-8f1153c62cda -Username User -Password VerySecure
 #>
-param ([Parameter(Mandatory)][string] $Token, [Parameter(Mandatory)][string]$TenantId)
+param ([Parameter(Mandatory)][string]$Username, [Parameter(Mandatory)][string]$Password, [Parameter(Mandatory)][string]$TenantId)
 $ErrorActionPreference = "Stop"
+ 
+# Install az-cli (updates current version if already installed)
+$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
+
+# Login as app-proxy user
+az login --username $Username --password $Password --allow-no-subscriptions
+# Get account token
+$Token = $(az account get-access-token --resource-type 'aad-graph' --scope 'https://proxy.cloudwebappproxy.net/registerapp/user_impersonation' --query "accessToken" -o tsv)
 
 # Update-AzWvdHostPool -ResourceGroupName XXX -Name XXX -CustomRdpProperty targetisaadjoined:i:1
 

@@ -59,8 +59,9 @@ module "virtual_machine" {
 
   # Custom app-proxy script
   custom_script_extension_name = "app-proxy-onboarding-0${count.index}"
+  # update to point to branch
   additional_script_uri        = var.additional_script_uri
-  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
+  additional_script_name       = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Username ${data.azurerm_key_vault_secret.vm_user_email.value} -Password ${data.azurerm_key_vault_secret.vm_user_password.value}"
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
@@ -68,11 +69,3 @@ module "virtual_machine" {
 }
 
 data "azurerm_client_config" "this" {}
-
-data "external" "this" {
-  program = ["bash", "${path.module}/get-access-token.sh"]
-  query = {
-    username = data.azurerm_key_vault_secret.vm_user_email.value
-    password = data.azurerm_key_vault_secret.vm_user_password.value
-  }
-}

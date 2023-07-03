@@ -35,11 +35,11 @@ variable "vm_availabilty_zones" {
   default = "1"
 }
 variable "additional_script_uri" {
-  default     = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/HEAD/components/app-proxy/Bootstrap-Application-Proxy.ps1"
+  default     = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/DTSPO-14061-Add-vms/components/app-proxy/Bootstrap-Application-Proxy.ps1"
   description = "URI of a publically accessible script to run against the virtual machine."
 }
 variable "additional_script_name" {
-  default = "Bootstrap_Application_Proxy.ps1"
+  default = "Bootstrap-Application-Proxy.ps1"
 }
 variable "app_proxy_subnet_rg" {
   default = "mgmt-vpn-2-mgmt"
