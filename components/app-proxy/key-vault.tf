@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "app_proxy_kv" {
-  name                = "${var.product}-kv"
+  name                = "${var.product}"
   location            = "UK South"
   resource_group_name = azurerm_resource_group.app_proxy_rg.name
   tenant_id           = data.azurerm_client_config.this.tenant_id
