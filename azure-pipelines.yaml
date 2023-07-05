@@ -96,6 +96,7 @@ stages:
             scriptType: bash
             scriptLocation: inlineScript
             azureSubscription: ${{ variables.registerServiceConnection }}
+            workingDirectory: azure-app-proxy
             inlineScript: |
               yarn set version stable
               pwd
