@@ -91,20 +91,7 @@ stages:
         - checkout: cnp-azuredevops-libraries
           clean: true
         - task: AzureCLI@2
-          displayName: 'Unlock TF state if required'
-          condition: |
-            and( succeeded(),
-              or(
-                  and(
-                      ne('${{ parameters.overrideAction }}', 'plan'),
-                      eq(variables['isAutoTriggered'], false)
-                  ),
-                  and(
-                      eq(variables['isAutoTriggered'], true),
-                      eq(variables['isMain'], true)
-                  )
-              )
-            )
+          displayName: 'Register apps in app proxy'
           inputs:
             scriptType: bash
             scriptLocation: inlineScript
