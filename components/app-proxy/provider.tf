@@ -20,6 +20,14 @@ provider "azurerm" {
   subscription_id            = var.cnp_vault_sub
 }
 
+# Provider for DNS registration
+provider "azurerm" {
+  alias = "dns"
+  features {}
+  skip_provider_registration = true
+  subscription_id            = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+}
+
 terraform {
   backend "azurerm" {}
   required_version = "1.4.0"
