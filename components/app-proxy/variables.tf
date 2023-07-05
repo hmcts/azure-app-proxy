@@ -12,7 +12,7 @@ variable "os_type" {
   type        = string
 }
 variable "additional_script_uri" {
-  default     = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/DTSPO-14061-Add-vms/components/app-proxy/Bootstrap-Application-Proxy.ps1"
+  default     = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/Bootstrap-Application-Proxy.ps1"
   description = "URI of a publically accessible script to run against the virtual machine."
 }
 variable "additional_script_name" {
