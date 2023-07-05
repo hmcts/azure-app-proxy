@@ -13,28 +13,23 @@ resource "azurerm_resource_group" "this" {
   tags = module.tags.common_tags
 }
 
-# TODO store in a vault
-resource "random_password" "this" {
-  length = 30
-}
-
-resource "azurerm_subnet" "this" {
-  name = "app-proxy"
-
+resource "azurerm_subnet" "app_proxy" {
+  name                 = "app-proxy"
   address_prefixes     = ["10.99.73.0/25"]
-  resource_group_name  = "mgmt-vpn-2-mgmt"
-  virtual_network_name = "mgmt-vpn-2-vnet"
+  resource_group_name  = var.app_proxy_subnet_rg
+  virtual_network_name = var.app_proxy_vnet_name
 }
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
-  source = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
-
-  vm_type              = "windows"
-  vm_name              = "${var.product}-${var.env}"
+  source  = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
+  count   = var.vm_count
+  vm_type = var.os_type
+  # 15 Char name limit
+  vm_name              = "${var.product}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
-  vm_admin_password    = random_password.this.result
-  vm_subnet_id         = azurerm_subnet.this.id
+  vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
+  vm_subnet_id         = azurerm_subnet.app_proxy.id
   vm_publisher_name    = "MicrosoftWindowsServer"
   vm_offer             = "WindowsServer"
   vm_sku               = "2022-datacenter-azure-edition-core"
@@ -42,42 +37,34 @@ module "virtual_machine" {
   vm_version           = "latest"
   vm_availabilty_zones = "1"
 
-  privateip_allocation = "Dynamic"
+  # Splunk
+  install_splunk_uf   = true
+  splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
+  splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
+  splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
 
+  # Dynatrace
+  install_dynatrace_oneagent = true
+  dynatrace_hostgroup        = var.dynatrace_hostgroup
+  dynatrace_server           = var.dynatrace_server
+  dynatrace_tenant_id        = var.dynatrace_tenant_id
+  dynatrace_token            = data.azurerm_key_vault_secret.dynatrace_token.value
+
+  # Tenable
+  nessus_install = true
+  nessus_server  = var.nessus_server
+  nessus_key     = data.azurerm_key_vault_secret.nessus_key.value
+  nessus_groups  = var.nessus_groups
+
+  # Custom app-proxy script
+  custom_script_extension_name = "app-proxy-onboarding-0${count.index}"
+  # update to point to branch
+  additional_script_uri  = var.additional_script_uri
+  additional_script_name = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Username ${data.azurerm_key_vault_secret.vm_user_email.value} -Password ${data.azurerm_key_vault_secret.vm_user_password.value}"
+
+  privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
   tags                           = module.tags.common_tags
 }
 
-// TODO switch to extension in terraform-module-vm-bootstrap when enabling splunk / tenable
-resource "azurerm_virtual_machine_extension" "this" {
-  name                 = "app-proxy-onboarding"
-  virtual_machine_id   = module.virtual_machine.vm_id
-  publisher            = "Microsoft.Compute"
-  type                 = "CustomScriptExtension"
-  type_handler_version = "1.9"
-  protected_settings   = <<PROTECTED_SETTINGS
-    {
-      "fileUris": ["${var.script_url}"],
-      "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File bootstrap-app-proxy.ps1 -TenantId ${data.azurerm_client_config.this.tenant_id} -Token ${data.external.this.result.accessToken}"
-    }
-    PROTECTED_SETTINGS
-
-  tags = module.tags.common_tags
-}
-
-variable "script_url" {
-  default = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/HEAD/components/app-proxy/Bootstrap-Application-Proxy.ps1"
-}
-
 data "azurerm_client_config" "this" {}
-
-data "external" "this" {
-  program = ["bash", "${path.module}/get-access-token.sh"]
-}
-
-
-# TODO remove and store in a vault
-output "vm_password" {
-  value     = random_password.this.result
-  sensitive = true
-}
