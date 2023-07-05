@@ -6,7 +6,6 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
-
 resource "azurerm_resource_group" "app_proxy_rg" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location

@@ -27,7 +27,6 @@ Set-Alias -Name az -Value "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin
 # Login as app-proxy user
 az login --username $Username --password $Password --allow-no-subscriptions
 # Get account token
-# $Token = $(az account get-access-token --resource-type 'aad-graph' --scope 'https://proxy.cloudwebappproxy.net/registerapp/user_impersonation' --query "accessToken" -o tsv)
 try {
     $Token = $(az account get-access-token --resource-type 'aad-graph' --scope 'https://proxy.cloudwebappproxy.net/registerapp/user_impersonation' --query "accessToken" -o tsv)
     Write-Host "Fetched access token for account"
@@ -35,7 +34,6 @@ try {
     Write-Host "Error occurred while fetching the access token:`n$($_.Exception.Message)"
     exit 1
 }
-# Update-AzWvdHostPool -ResourceGroupName XXX -Name XXX -CustomRdpProperty targetisaadjoined:i:1
 
 curl.exe https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/DownloadConnectorInstaller -o installer.exe
 
