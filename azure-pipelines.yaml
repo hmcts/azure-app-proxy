@@ -20,6 +20,8 @@ variables:
     value: app-proxy
   - name: terraformInitSubscription
     value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - name: registerServiceConnection
+    value: GA
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 parameters:
@@ -66,7 +68,6 @@ stages:
         - job: TerraformPlanApply
           pool:
             vmImage: ${{ variables.agentPool }}
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
@@ -76,3 +77,38 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+
+  - stage: registerapps
+    dependsOn: "Precheck"
+    jobs:
+    - job: registerappsonappproxy
+      pool:
+        vmImage: ${{ variables.agentPool }}
+      timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+      steps:
+        - checkout: self
+          clean: true
+        - checkout: cnp-azuredevops-libraries
+          clean: true
+        - task: AzureCLI@2
+          displayName: 'Unlock TF state if required'
+          condition: |
+            and( succeeded(),
+              or(
+                  and(
+                      ne('${{ parameters.overrideAction }}', 'plan'),
+                      eq(variables['isAutoTriggered'], false)
+                  ),
+                  and(
+                      eq(variables['isAutoTriggered'], true),
+                      eq(variables['isMain'], true)
+                  )
+              )
+            )
+          inputs:
+            scriptType: bash
+            scriptLocation: inlineScript
+            azureSubscription: ${{ variables.registerServiceConnection }}
+            inlineScript: |
+              yarn dlx azure-app-proxy-manager --config apps.yaml
+
