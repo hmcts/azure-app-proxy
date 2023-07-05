@@ -6,33 +6,10 @@ variable "location" {
 }
 
 # VM Configuration Block
-variable "user_token" {
-  sensitive   = true
-  default     = ""
-  description = "Short-Lived token for bootstrapping VM"
-}
 variable "os_type" {
   default     = "windows"
   description = "VM OS type, defaults to windows for app_proxy resources."
   type        = string
-}
-variable "vm_publisher_name" {
-  default = "MicrosoftWindowsServer"
-}
-variable "vm_offer" {
-  default = "WindowsServer"
-}
-variable "vm_sku" {
-  default = "2022-datacenter-azure-edition-core"
-}
-variable "vm_size" {
-  default = "Standard_D2ds_v5"
-}
-variable "vm_version" {
-  default = "latest"
-}
-variable "vm_availabilty_zones" {
-  default = "1"
 }
 variable "additional_script_uri" {
   default     = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/DTSPO-14061-Add-vms/components/app-proxy/Bootstrap-Application-Proxy.ps1"
@@ -51,14 +28,6 @@ variable "vm_count" {
   default = 3
 }
 
-variable "install_splunk_uf" {
-  default = true
-}
-
-# Dynatrace
-variable "install_dynatrace_oa" {
-  default = true
-}
 variable "dynatrace_tenant_id" {}
 variable "dynatrace_hostgroup" {}
 variable "dynatrace_server" {}

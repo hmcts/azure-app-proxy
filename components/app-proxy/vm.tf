@@ -6,14 +6,14 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
-resource "azurerm_resource_group" "app_proxy_rg" {
+resource "azurerm_resource_group" "this" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
 
   tags = module.tags.common_tags
 }
 
-resource "azurerm_subnet" "app_proxy_subnet" {
+resource "azurerm_subnet" "app_proxy" {
   name                 = "app-proxy"
   address_prefixes     = ["10.99.73.0/25"]
   resource_group_name  = var.app_proxy_subnet_rg
@@ -27,24 +27,24 @@ module "virtual_machine" {
   vm_type = var.os_type
   # 15 Char name limit
   vm_name              = "${var.product}-${count.index}"
-  vm_resource_group    = azurerm_resource_group.app_proxy_rg.name
+  vm_resource_group    = azurerm_resource_group.this.name
   vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
-  vm_subnet_id         = azurerm_subnet.app_proxy_subnet.id
-  vm_publisher_name    = var.vm_publisher_name
-  vm_offer             = var.vm_offer
-  vm_sku               = var.vm_sku
-  vm_size              = var.vm_size
-  vm_version           = var.vm_version
-  vm_availabilty_zones = var.vm_availabilty_zones
+  vm_subnet_id         = azurerm_subnet.app_proxy.id
+  vm_publisher_name    = "MicrosoftWindowsServer"
+  vm_offer             = "WindowsServer"
+  vm_sku               = "2022-datacenter-azure-edition-core"
+  vm_size              = "Standard_D2ds_v5"
+  vm_version           = "latest"
+  vm_availabilty_zones = "1"
 
   # Splunk
-  install_splunk_uf   = var.install_splunk_uf
+  install_splunk_uf   = true
   splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
   splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
 
   # Dynatrace
-  install_dynatrace_oneagent = var.install_dynatrace_oa
+  install_dynatrace_oneagent = true
   dynatrace_hostgroup        = var.dynatrace_hostgroup
   dynatrace_server           = var.dynatrace_server
   dynatrace_tenant_id        = var.dynatrace_tenant_id

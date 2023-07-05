@@ -67,8 +67,6 @@ stages:
           pool:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          variables:
-            token: $[ dependencies.Precheck.outputs['UserLogin.TOKEN'] ]
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
