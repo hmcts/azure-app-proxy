@@ -97,6 +97,6 @@ stages:
             scriptLocation: inlineScript
             azureSubscription: ${{ variables.registerServiceConnection }}
             inlineScript: |
-              yarn set version latest
+              yarn set version stable
               yarn dlx azure-app-proxy-manager --config apps.yaml
 
