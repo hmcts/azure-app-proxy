@@ -5,7 +5,7 @@ data "local_file" "configuration" {
 locals {
   apps = yamldecode(data.local_file.configuration.content).apps
   cname_records = flatten([
-      for app in local.apps : split(".", replace("${app.externalUrl}", "https://", ""))[0]
+    for app in local.apps : split(".", replace("${app.externalUrl}", "https://", ""))[0]
   ])
 }
 
