@@ -44,6 +44,11 @@ parameters:
       component: 'app-proxy'
       service_connection: 'Reform-CFT-Mgmt'
       dependsOn: 'Precheck'
+    - deployment: 'dns_registration'
+      environment: 'mgmt'
+      component: 'dns'
+      service_connection: 'Reform-CFT-Mgmt'
+      dependsOn: 'Precheck'
 
 stages:
   - stage: Precheck
