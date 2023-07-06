@@ -1,10 +1,15 @@
 # TODO schema for auto completion
 
 apps:
-  - name: "My app101"
-    externalUrl: 'https://my-test-app.app-proxy-poc.sandbox.platform.hmcts.net'
+  - name: "Incident"
+    externalUrl: "https://incidents.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
     appRoleAssignments:
-      - Test app
-    internalUrl: 'https://rees-on-bau101.sandbox.platform.hmcts.net'
-    userAssignmentRequired: true
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    internalUrl: "https://response.platform.hmcts.net/"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"

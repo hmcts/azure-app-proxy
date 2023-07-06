@@ -99,7 +99,5 @@ stages:
             workingDirectory: azure-app-proxy
             inlineScript: |
               yarn set version stable
-              pwd
-              ls
               yarn dlx azure-app-proxy-manager --config apps.yaml
 
