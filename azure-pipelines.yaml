@@ -84,7 +84,7 @@ stages:
               product: ${{ variables.product }}
 
   - stage: registerapps
-    dependsOn: "Precheck"
+    dependsOn: "dns_registration"
     jobs:
     - job: registerappsonappproxy
       pool:
