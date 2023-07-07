@@ -2,14 +2,12 @@ trigger:
   branches:
     include:
       - main
-pr:
-  - main
 schedules:
   - cron: '0 6 * * Mon-Fri'
-    displayName: Runs 9 AM Mon-Fri
+    displayName: Runs 6 AM Mon-Fri
     branches:
       include:
-        - master
+        - main
     always: 'true'
 resources:
   repositories:
