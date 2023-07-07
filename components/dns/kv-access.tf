@@ -1,7 +1,7 @@
 data "azurerm_key_vault" "certificate_vault" {
   name                = "acmedtscftptlintsvc"
   resource_group_name = "cft-platform-ptl-rg"
-  provider            = azurerm.soc
+  provider            = azurerm.cftptl
 }
 
 resource "azurerm_role_assignment" "vault_access" {

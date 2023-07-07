@@ -48,7 +48,7 @@ parameters:
       environment: 'mgmt'
       component: 'dns'
       service_connection: 'Reform-CFT-Mgmt'
-      dependsOn: 'Precheck'
+      dependsOn: 'azure_app_proxy_prod'
 
 stages:
   - stage: Precheck
