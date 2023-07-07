@@ -85,6 +85,7 @@ stages:
 
   - stage: registerapps
     dependsOn: "dns_registration"
+    condition: and(succeeded(), eq(variables.isMain, true))
     jobs:
     - job: registerappsonappproxy
       pool:
