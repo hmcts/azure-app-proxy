@@ -1,3 +1,14 @@
+trigger:
+  branches:
+    include:
+      - main
+schedules:
+  - cron: '0 6 * * Mon-Fri'
+    displayName: Runs 6 AM Mon-Fri
+    branches:
+      include:
+        - main
+    always: 'true'
 resources:
   repositories:
   - repository: cnp-azuredevops-libraries
@@ -39,7 +50,7 @@ parameters:
   - name: environment_components
     type: object
     default:
-    - deployment: 'azure_app_proxy_prod'
+    - deployment: 'app_proxy_infra'
       environment: 'mgmt'
       component: 'app-proxy'
       service_connection: 'Reform-CFT-Mgmt'
@@ -48,7 +59,7 @@ parameters:
       environment: 'mgmt'
       component: 'dns'
       service_connection: 'Reform-CFT-Mgmt'
-      dependsOn: 'azure_app_proxy_prod'
+      dependsOn: 'app_proxy_infra'
 
 stages:
   - stage: Precheck
