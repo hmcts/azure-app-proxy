@@ -7,6 +7,7 @@ locals {
   cname_records = flatten([
     for app in local.apps : {
       name      = split(".", replace("${app.externalUrl}", "https://", ""))[0],
+      # Splits externalUrl by dot and slices the first item in the list, joins them back with dot to form the domain name.
       zone_name = join(".", slice(split(".", "${app.externalUrl}"), 1, length(split(".", "${app.externalUrl}"))))
     }
   ])
