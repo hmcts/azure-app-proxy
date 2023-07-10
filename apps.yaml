@@ -13,3 +13,11 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
+  - name: "CFT Jenkins - Sandbox"
+    externalUrl: "https://sandbox-build.hmcts.net"
+    logoUrl: TODO
+    appRoleAssignments: 
+    - DTS CFT Developers
+    - DTS Platform Operations
+    internalUrl: "https://sandbox-build.platform.hmcts.net"
+    userAssignmentRequired: false
