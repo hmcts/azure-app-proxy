@@ -35,7 +35,7 @@ module "virtual_machine" {
   vm_sku               = "2022-datacenter-azure-edition-core"
   vm_size              = "Standard_D2ds_v5"
   vm_version           = "latest"
-  vm_availabilty_zones = "1"
+  vm_availabilty_zones = "${count.index + 1}"
 
   # Splunk
   install_splunk_uf   = true
