@@ -26,6 +26,7 @@ apps:
       name: "wildcard-hmcts-net"
     redirectUrls:
       - "https://sandbox-build.hmcts.net/securityRealm/finishLogin"
+      - "https://sandbox-build.hmcts.net/"
     clientSecret:
       name: jenkins-client-secret
       key_vault_name: cftsbox-intsvc
