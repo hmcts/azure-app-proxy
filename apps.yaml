@@ -15,11 +15,11 @@ apps:
       name: "wildcard-hmcts-net"
   - name: "CFT Jenkins - Sandbox"
     externalUrl: "https://sandbox-build.hmcts.net"
-    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins-sbox.png
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
     appRoleAssignments: 
     - DTS CFT Developers
     - DTS Platform Operations
-    internalUrl: "https://sandbox-build.platform.hmcts.net"
+    internalUrl: "https://sandbox-build.hmcts.net"
     userAssignmentRequired: false
     tls:
       key_vault_name: "acmedtscftptlintsvc"
