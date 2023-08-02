@@ -34,3 +34,4 @@ apps:
       - "User.Read.All"
       - "Group.Read.All"
       - "People.Read"
+    groupMembershipClaims: "SecurityGroup"
