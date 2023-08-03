@@ -13,6 +13,16 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
+  - name: "CFT Jenkins - Sandbox Static"
+    externalUrl: "https://static-sandbox-build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://static-sandbox-build.hmcts.net/"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
   - name: "CFT Jenkins - Sandbox"
     externalUrl: "https://sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
