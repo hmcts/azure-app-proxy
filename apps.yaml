@@ -1,5 +1,3 @@
-# TODO schema for auto completion
-
 apps:
   - name: "Incident"
     externalUrl: "https://incidents.hmcts.net"
