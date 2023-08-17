@@ -39,7 +39,7 @@ apps:
     clientSecret:
       name: jenkins-client-secret
       key_vault_name: cftsbox-intsvc
-    oauth2Permissions:
+    graphApiPermissions:
       - "User.Read.All"
       - "Group.Read.All"
       - "People.Read"
