@@ -42,5 +42,5 @@ apps:
     graphApiPermissions:
       - "User.Read.All"
       - "Group.Read.All"
-      - "People.Read"
+      - "People.Read.All"
     groupMembershipClaims: "SecurityGroup"
