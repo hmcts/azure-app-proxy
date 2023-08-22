@@ -12,6 +12,8 @@ This will provide autocompletion and show all the features available.
 The automation is built using a project called [azure-app-proxy-manager](https://github.com/hmcts/azure-app-proxy-manager)
 written by [@timja](http://github.com/timja) and with many features added by [@adusumillipraveen](https://github.com/adusumillipraveen).
 
+We can likely swap to terraform once it's supported there, but currently there are some limitations in the current version which may not change until a major version of the provider.
+[See the work that was done to look at this](https://github.com/hashicorp/terraform-provider-azuread/issues/7#issuecomment-1581102984).
 
 ## Architecture
 
@@ -46,3 +48,4 @@ To connect you will need to be on one of the bastions and the VPN
 - [Tab approval - TODO]()
 - [How to automate Azure AD Application Proxy? - Blog by timja](https://blog.timja.dev/azuread-app-proxy/)
 - [How to automate Azure AD Application Proxy? - Part 2 - Blog by timja](https://blog.timja.dev/how-to-automate-azure-ad-application-proxy-part-2/)
+- [Terraform tracking issue](https://github.com/hashicorp/terraform-provider-azuread/issues/7#issuecomment-1581102984)
