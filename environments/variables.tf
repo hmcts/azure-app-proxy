@@ -46,5 +46,6 @@ variable "nessus_groups" {
   default = "Platform-Operations-App-Proxy"
 }
 
+variable "cnp_vault_env" {}
 variable "cnp_vault_sub" {}
 variable "cnp_vault_rg" {}
