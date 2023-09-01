@@ -46,6 +46,8 @@ variable "nessus_groups" {
   default = "Platform-Operations-App-Proxy"
 }
 
-variable "cnp_vault_env" {}
+variable "cnp_vault_env" {
+  description = "Bootstrap module uses the ENV variable to generate KV name"
+}
 variable "cnp_vault_sub" {}
 variable "cnp_vault_rg" {}
