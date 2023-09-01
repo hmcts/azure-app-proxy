@@ -22,12 +22,18 @@ resource "azurerm_subnet" "app_proxy" {
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
+  providers = {
+    azurerm     = azurerm
+    azurerm.cnp = azurerm.cnp
+    azurerm.soc = azurerm.soc
+  }
   source  = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
   count   = var.vm_count
   vm_type = var.os_type
   # 15 Char name limit
   vm_name              = "${var.product}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
+  env                  = var.cnp_vault_env
   vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
   vm_subnet_id         = azurerm_subnet.app_proxy.id
   vm_publisher_name    = "MicrosoftWindowsServer"

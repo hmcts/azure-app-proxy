@@ -1,3 +1,4 @@
+cnp_vault_env       = "prod"
 cnp_vault_rg        = "core-infra-prod"
 cnp_vault_sub       = "8999dec3-0104-4a27-94ee-6588559729d1"
 dynatrace_tenant_id = "ebe20728"
