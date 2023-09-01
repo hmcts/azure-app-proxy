@@ -33,6 +33,7 @@ module "virtual_machine" {
   # 15 Char name limit
   vm_name              = "${var.product}-${count.index}"
   vm_resource_group    = azurerm_resource_group.this.name
+  env                  = var.env
   vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
   vm_subnet_id         = azurerm_subnet.app_proxy.id
   vm_publisher_name    = "MicrosoftWindowsServer"
