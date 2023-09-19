@@ -78,7 +78,7 @@ module "virtual_machine" {
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
-  tags = count.index == 2  ? module.shutdowntags.common_tags : module.tags.common_tags
+  tags = count.index == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
 }
 
 data "azurerm_client_config" "this" {}
