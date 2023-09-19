@@ -51,3 +51,7 @@ variable "cnp_vault_env" {
 }
 variable "cnp_vault_sub" {}
 variable "cnp_vault_rg" {}
+
+variable "autoShutdown" {
+  default = true
+}
