@@ -6,6 +6,14 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
+module "shutdowntags" {
+  source       = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  environment  = var.env
+  product      = var.product
+  builtFrom    = var.builtFrom
+  autoShutdown = var.autoShutdown
+}
+
 resource "azurerm_resource_group" "this" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
@@ -70,7 +78,7 @@ module "virtual_machine" {
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
-  tags                           = module.tags.common_tags
+  tags                           = count.index == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
 }
 
 data "azurerm_client_config" "this" {}
