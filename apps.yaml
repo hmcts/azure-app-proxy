@@ -25,7 +25,7 @@ apps:
   - name: "CFT Jenkins - Sandbox SonarQube"
     externalUrl: "https://cft-sandbox-sonarqube-webhook.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
-    internalUrl: "https://sandbox-build.hmcts.net/sonarqube-webhook"
+    internalUrl: "https://cft-sandbox-sonarqube-webhook.hmcts.net"
     userAssignmentRequired: false
     tls:
       key_vault_name: "acmedtscftptlintsvc"
