@@ -1,5 +1,4 @@
-# TODO schema for auto completion
-
+# You can configure autocomplete using the schema by following: https://github.com/hmcts/azure-app-proxy-manager#appsyaml-schema
 apps:
   - name: "Incident"
     externalUrl: "https://incidents.hmcts.net"
@@ -13,3 +12,65 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
+  - name: "CFT Jenkins - Sandbox Static"
+    externalUrl: "https://static-sandbox-build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://static-sandbox-build.hmcts.net/"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
+  - name: "CFT Jenkins - Sandbox SonarQube"
+    externalUrl: "https://cft-sandbox-sonarqube-webhook.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://cft-sandbox-sonarqube-webhook.hmcts.net"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
+  - name: "CFT Jenkins - Sandbox"
+    externalUrl: "https://sandbox-build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    appRoleAssignments: 
+    - DTS CFT Developers
+    - DTS Platform Operations
+    internalUrl: "https://sandbox-build.hmcts.net"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    redirectUrls:
+      - "https://sandbox-build.hmcts.net/securityRealm/finishLogin"
+      - "https://sandbox-build.hmcts.net/"
+    clientSecret:
+      name: jenkins-client-secret
+      key_vault_name: cftsbox-intsvc
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    groupMembershipClaims: "SecurityGroup"
+  - name: "SDS Jenkins - SonarQube"
+    externalUrl: "https://sds-sonarqube-webhook.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://sds-sonarqube-webhook.hmcts.net"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
+  - name: "SDS Jenkins - Sandbox SonarQube"
+    externalUrl: "https://sds-sandbox-sonarqube-webhook.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://sds-sandbox-sonarqube-webhook.hmcts.net"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true

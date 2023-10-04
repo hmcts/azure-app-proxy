@@ -6,6 +6,14 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
+module "shutdowntags" {
+  source       = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  environment  = var.env
+  product      = var.product
+  builtFrom    = var.builtFrom
+  autoShutdown = var.autoShutdown
+}
+
 resource "azurerm_resource_group" "this" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
@@ -22,19 +30,25 @@ resource "azurerm_subnet" "app_proxy" {
 
 # TODO auto-register VMs in DNS with private dns autoregistration
 module "virtual_machine" {
+  providers = {
+    azurerm     = azurerm
+    azurerm.cnp = azurerm.cnp
+    azurerm.soc = azurerm.soc
+  }
   source  = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
   count   = var.vm_count
   vm_type = var.os_type
   # 15 Char name limit
-  vm_name           = "${var.product}-${count.index}"
-  vm_resource_group = azurerm_resource_group.this.name
-  vm_admin_password = azurerm_key_vault_secret.vm_admin_password.value
-  vm_subnet_id      = azurerm_subnet.app_proxy.id
-  vm_publisher_name = "MicrosoftWindowsServer"
-  vm_offer          = "WindowsServer"
-  vm_sku            = "2022-datacenter-azure-edition-core"
-  vm_size           = "Standard_D2ds_v5"
-  vm_version        = "latest"
+  vm_name              = "${var.product}-${count.index}"
+  vm_resource_group    = azurerm_resource_group.this.name
+  env                  = var.cnp_vault_env
+  vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
+  vm_subnet_id         = azurerm_subnet.app_proxy.id
+  vm_publisher_name    = "MicrosoftWindowsServer"
+  vm_offer             = "WindowsServer"
+  vm_sku               = "2022-datacenter-azure-edition-core"
+  vm_size              = "Standard_D2ds_v5"
+  vm_version           = "latest"
   # 3 is max availability zones - round robin between them
   vm_availabilty_zones = count.index % 3 + 1
 
@@ -65,7 +79,7 @@ module "virtual_machine" {
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
-  tags                           = module.tags.common_tags
+  tags                           = count.index == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
 }
 
 data "azurerm_client_config" "this" {}
