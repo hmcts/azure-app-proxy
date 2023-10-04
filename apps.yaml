@@ -22,6 +22,16 @@ apps:
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
+  - name: "CFT Jenkins - Sandbox SonarQube"
+    externalUrl: "https://cft-sandbox-sonarqube-webhook.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://sandbox-build.hmcts.net/sonarqube-webhook"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
   - name: "CFT Jenkins - Sandbox"
     externalUrl: "https://sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
