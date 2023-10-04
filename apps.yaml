@@ -60,7 +60,7 @@ apps:
     internalUrl: "https://sds-sonarqube-webhook.hmcts.net"
     userAssignmentRequired: false
     tls:
-      key_vault_name: "acmedtssdsptl"
+      key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
@@ -70,7 +70,7 @@ apps:
     internalUrl: "https://sds-sandbox-sonarqube-webhook.hmcts.net"
     userAssignmentRequired: false
     tls:
-      key_vault_name: "acmedtssdsptl"
+      key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
