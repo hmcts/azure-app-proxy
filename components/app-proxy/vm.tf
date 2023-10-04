@@ -39,16 +39,16 @@ module "virtual_machine" {
   count   = var.vm_count
   vm_type = var.os_type
   # 15 Char name limit
-  vm_name              = "${var.product}-${count.index}"
-  vm_resource_group    = azurerm_resource_group.this.name
-  env                  = var.cnp_vault_env
-  vm_admin_password    = azurerm_key_vault_secret.vm_admin_password.value
-  vm_subnet_id         = azurerm_subnet.app_proxy.id
-  vm_publisher_name    = "MicrosoftWindowsServer"
-  vm_offer             = "WindowsServer"
-  vm_sku               = "2022-datacenter-azure-edition-core"
-  vm_size              = "Standard_D2ds_v5"
-  vm_version           = "latest"
+  vm_name           = "${var.product}-${count.index}"
+  vm_resource_group = azurerm_resource_group.this.name
+  env               = var.cnp_vault_env
+  vm_admin_password = azurerm_key_vault_secret.vm_admin_password.value
+  vm_subnet_id      = azurerm_subnet.app_proxy.id
+  vm_publisher_name = "MicrosoftWindowsServer"
+  vm_offer          = "WindowsServer"
+  vm_sku            = "2022-datacenter-azure-edition-core"
+  vm_size           = "Standard_D2ds_v5"
+  vm_version        = "latest"
   # 3 is max availability zones - round robin between them
   vm_availabilty_zones = count.index % 3 + 1
 
