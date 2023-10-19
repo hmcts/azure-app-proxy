@@ -76,8 +76,8 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     redirectUrls:
-      - "https://sandbox-build.hmcts.net/securityRealm/finishLogin"
-      - "https://sandbox-build.hmcts.net/"
+      - "https://sds-sandbox-build.hmcts.net/securityRealm/finishLogin"
+      - "https://sds-sandbox-build.hmcts.net/"
     clientSecret:
       name: jenkins-client-secret
       key_vault_name: ptlsbox
