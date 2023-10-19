@@ -70,7 +70,7 @@ apps:
     appRoleAssignments: 
     - DTS SDS Developers
     - DTS Platform Operations
-    internalUrl: "https://sds-sandbox-build.platform.hmcts.net"
+    internalUrl: "https://sds-sandbox-build.hmcts.net"
     userAssignmentRequired: true
     tls:
       key_vault_name: "acmedtssdsptl"
