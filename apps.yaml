@@ -96,6 +96,28 @@ apps:
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
+  - name: "SDS Jenkins - PTL"
+    externalUrl: "https://sds-build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    appRoleAssignments: 
+    - DTS SDS Developers
+    - DTS Platform Operations
+    internalUrl: "https://sds-build.hmcts.net"
+    userAssignmentRequired: true
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    redirectUrls:
+      - "https://sds-build.hmcts.net/securityRealm/finishLogin"
+      - "https://sds-build.hmcts.net/"
+    clientSecret:
+      name: jenkins-client-secret
+      key_vault_name: ptl
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    groupMembershipClaims: "SecurityGroup"
   - name: "SDS Jenkins - SonarQube"
     externalUrl: "https://sds-sonarqube-webhook.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
