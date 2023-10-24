@@ -64,6 +64,38 @@ apps:
       - "Group.Read.All"
       - "People.Read.All"
     groupMembershipClaims: "SecurityGroup"
+  - name: "CFT Jenkins - PTL"
+    externalUrl: "https://build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    appRoleAssignments: 
+    - DTS CFT Developers
+    - DTS Platform Operations
+    internalUrl: "https://build.hmcts.net"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    redirectUrls:
+      - "https://build.hmcts.net/securityRealm/finishLogin"
+      - "https://build.hmcts.net/"
+    clientSecret:
+      name: jenkins-client-secret
+      key_vault_name: cftptl-intsvc
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    groupMembershipClaims: "SecurityGroup"
+  - name: "CFT Jenkins - PTL Static"
+    externalUrl: "https://static-build.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
+    internalUrl: "https://static-build.hmcts.net/"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: true
   - name: "SDS Jenkins - Sandbox"
     externalUrl: "https://sds-sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
