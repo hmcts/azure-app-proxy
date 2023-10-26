@@ -12,6 +12,8 @@ This will provide autocompletion and show all the features available.
 The automation is built using a project called [azure-app-proxy-manager](https://github.com/hmcts/azure-app-proxy-manager)
 written by [@timja](http://github.com/timja) and with many features added by [@adusumillipraveen](https://github.com/adusumillipraveen).
 
+After an application is registered through the automated pipeline, a GA account must grant admin consent for the Microsoft Graph Permissions in Azure. 
+
 We can likely swap to terraform once it's supported there, but currently there are some limitations in the current version which may not change until a major version of the provider.
 [See the work that was done to look at this](https://github.com/hashicorp/terraform-provider-azuread/issues/7#issuecomment-1581102984).
 
@@ -20,9 +22,6 @@ We can likely swap to terraform once it's supported there, but currently there a
 ![Architecture](https://github.com/hmcts/azure-app-proxy/assets/21194782/c1ba21e3-6258-4cf0-a03f-c3afd9bd98b8)
 
 ## Operational concerns
-
-### Graph Permissions
-After an application is registered through the automated pipeline, a GA account must grant admin consent for the Microsoft Graph Permissions in Azure. 
 
 ### Patching
 
