@@ -21,6 +21,9 @@ We can likely swap to terraform once it's supported there, but currently there a
 
 ## Operational concerns
 
+### Graph Permissions
+After an application is registered through the automated pipeline, a GA account must grant admin consent for the Microsoft Graph Permissions in Azure. 
+
 ### Patching
 
 Patching should be handled automatically as the `patch_mode` is set to `AutomaticByPlatform`
