@@ -1,5 +1,5 @@
 # You can configure autocomplete using the schema by following: https://github.com/hmcts/azure-app-proxy-manager#appsyaml-schema
-# yaml-language-server: $schema=https://github.com/hmcts/azure-app-proxy-manager/blob/main/apps.schema.json
+
 apps:
   - name: "Incident"
     externalUrl: "https://incidents.hmcts.net"
