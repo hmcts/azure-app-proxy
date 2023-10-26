@@ -184,11 +184,15 @@ apps:
   - name: "Netbox - Sandbox"
     externalUrl: "https://netbox-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/netbox.png
-    internalUrl: "https://netbox-sandbox.hmcts.net/"
     userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
     tls:
       key_vault_name: "acmedtssdsptlsbox"
       name: "wildcard-hmcts-net"
     clientSecret:
       name: "netbox-sandbox-client-secret"
       key_vault_name: "netbox-vault-ptlsbox"
+    internalUrl: "https://netbox-sandbox.hmcts.net/"
