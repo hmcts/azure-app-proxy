@@ -195,4 +195,4 @@ apps:
     clientSecret:
       name: "netbox-sandbox-client-secret"
       key_vault_name: "netbox-vault-ptlsbox"
-    internalUrl: "https://netbox.sandbox.platform.hmcts.net/"
+    internalUrl: "https://netbox-sandbox.hmcts.net/"
