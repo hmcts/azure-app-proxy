@@ -210,4 +210,4 @@ apps:
     clientSecret:
       name: "netbox-client-secret"
       key_vault_name: "netbox-vault-ptl"
-    internalUrl: "https://netbox.hmcts.net/"
+    internalUrl: "https://netbox.platform.hmcts.net/"
