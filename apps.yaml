@@ -211,3 +211,14 @@ apps:
       name: "netbox-client-secret"
       key_vault_name: "netbox-vault-ptl"
     internalUrl: "https://netbox.hmcts.net/"
+  - name: "Nessus"
+    externalUrl: "https://nessus.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nessus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
