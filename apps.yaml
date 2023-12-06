@@ -223,3 +223,27 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     internalUrl: "https://nessus.hmcts.net/"
+  - name: "Splunk Search Head"
+    externalUrl: "https://splunk-sh.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/splunk-search-head.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    internalUrl: "https://splunk-sh-prod-vm00.platform.hmcts.net:8000/"
+  - name: "Splunk Enteprise Security"
+    externalUrl: "https://splunk-es.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/splunk-es-server.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    internalUrl: "https://splunk-es-prod-vm00.platform.hmcts.net:8000/"
