@@ -222,7 +222,7 @@ apps:
     tls:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
-    internalUrl: "https://nessus.hmcts.net/"
+    internalUrl: "https://tenable-sc.platform.hmcts.net/"
   - name: "Splunk Search Head"
     externalUrl: "https://splunk-sh.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/splunk-search-head.png
