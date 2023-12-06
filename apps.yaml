@@ -235,7 +235,7 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     internalUrl: "https://splunk-sh-prod-vm00.platform.hmcts.net:8000/"
-  - name: "Splunk Enteprise Security"
+  - name: "Splunk Enterprise Security"
     externalUrl: "https://splunk-es.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/splunk-es-server.png
     userAssignmentRequired: false
