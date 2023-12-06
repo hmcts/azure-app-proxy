@@ -222,4 +222,4 @@ apps:
     tls:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
-    internalUrl: "https://nessus.hmcts.net/"
+    internalUrl: "https://tenable-sc.platform.hmcts.net/"
