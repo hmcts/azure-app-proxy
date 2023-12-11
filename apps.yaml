@@ -247,3 +247,19 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     internalUrl: "https://splunk-es-prod-vm00.platform.hmcts.net:8000/"
+  - name: "Backstage - Sandbox"
+    externalUrl: "https://backstage-sandbox.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    tls:
+      key_vault_name: "acmedtscftsboxintsvc"
+      name: "wildcard-hmcts-net"
+    internalUrl: "https://backstage-sandbox.hmcts.net/"
