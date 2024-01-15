@@ -286,12 +286,6 @@ apps:
         id: 86fee68e-ec7d-4a5a-86e4-192dc84589da
         groups:
           - "DTS Platform Operations"
-      - displayName: msiam_access
-        description: msiam_access
-        value: ""
-        id: 903bcba3-9c9e-4440-8b63-57ac9bd64ce3
-        groups:
-          - ""
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
