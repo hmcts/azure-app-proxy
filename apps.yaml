@@ -264,8 +264,8 @@ apps:
       name: "wildcard-hmcts-net"
     internalUrl: "https://backstage-sandbox.hmcts.net/"
   - name: "Panorama - Sandbox"
-    externalUrl: "https://panorama-sbox.hmcts.net"
-    internalUrl: "https://panorama-sbox.hmcts.net"
+    externalUrl: "https://panorama-sandbox.hmcts.net"
+    internalUrl: "https://panorama-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/paloalto.png
     userAssignmentRequired: false
     appRoleAssignments:
