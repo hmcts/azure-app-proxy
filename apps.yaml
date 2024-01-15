@@ -272,10 +272,6 @@ apps:
       - DTS Platform Operations
       - dcd_team_secops_v2
       - DTS Firewall Readers
-    graphApiPermissions:
-      - "User.Read.All"
-      - "Group.Read.All"
-      - "People.Read.All"
     appRoles:
       - displayName: monitor_readonly
         description: secops readonly role
