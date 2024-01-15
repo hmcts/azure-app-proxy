@@ -263,3 +263,39 @@ apps:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
     internalUrl: "https://backstage-sandbox.hmcts.net/"
+  - name: "Panorama - Sandbox"
+    externalUrl: "https://panorama-sbox.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/paloalto.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - dcd_team_secops_v2
+      - DTS Firewall Readers
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    appRoles:
+      - displayName: monitor_readonly
+        description: secops readonly role
+        value: monitor_readonly
+        id: 550d1323-abda-4480-b058-4cb4f9b2cb46
+        groups:
+          - "dcd_team_secops_v2"
+          - "DTS Firewall Readers"
+      - displayName: adminrole
+        description: PlatformOps admin role
+        value: adminrole
+        id: 86fee68e-ec7d-4a5a-86e4-192dc84589da
+        groups:
+          - "DTS Platform Operations"
+      - displayName: msiam_access
+        description: msiam_access
+        value: ""
+        id: 903bcba3-9c9e-4440-8b63-57ac9bd64ce3
+        groups:
+          - ""
+    tls:
+      key_vault_name: "acmedtscftsboxintsvc"
+      name: "wildcard-hmcts-net"
+    internalUrl: "https://backstage-sandbox.hmcts.net/"
