@@ -289,3 +289,25 @@ apps:
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
+  - name: "Backstage - PTL"
+    externalUrl: "https://backstage.hmcts.net"
+    internalUrl: "https://backstage.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+    graphApiPermissions:
+      - "User.Read.All"
+      - "User.Read"
+      - "Group.Read.All"
+      - "GroupMember.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
