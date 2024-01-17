@@ -289,4 +289,7 @@ apps:
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
+<<<<<<< HEAD
     preferredSingleSignOnMode: "saml"
+=======
+>>>>>>> main
