@@ -279,14 +279,14 @@ apps:
       - displayName: monitor_readonly
         description: secops readonly role
         value: monitor_readonly
-        id: 550d1323-abda-4480-b058-4cb4f9b2cb46
+        id: 03C3F6E2-8D74-4DF7-9AED-60036F1E0400
         groups:
           - "dcd_team_secops_v2"
           - "DTS Firewall Readers"
       - displayName: adminrole
         description: PlatformOps admin role
         value: adminrole
-        id: 86fee68e-ec7d-4a5a-86e4-192dc84589da
+        id: 62219C28-B116-4DE9-B831-4CE38E1D6F63
         groups:
           - "DTS Platform Operations"
     tls:
