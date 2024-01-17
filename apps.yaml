@@ -266,6 +266,9 @@ apps:
   - name: "Panorama - Sandbox"
     externalUrl: "https://panorama-sandbox.hmcts.net"
     internalUrl: "https://panorama-sandbox.hmcts.net"
+    redirectUrls:
+      - "https://panorama-sandbox.hmcts.net/"
+      - "https://panorama-sandbox.hmcts.net/php/login.php"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/paloalto.png
     userAssignmentRequired: false
     appRoleAssignments:
