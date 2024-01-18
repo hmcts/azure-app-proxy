@@ -302,6 +302,9 @@ apps:
   - name: "Backstage - PTL"
     externalUrl: "https://backstage.hmcts.net"
     internalUrl: "https://backstage.hmcts.net"
+    redirectUrls:
+      - "https://backstage.hmcts.net"
+      - "https://backstage.hmcts.net/api/auth/microsoft/handler/frame"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
     userAssignmentRequired: false
     appRoleAssignments:
