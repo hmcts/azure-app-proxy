@@ -300,6 +300,47 @@ apps:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
     preferredSingleSignOnMode: "saml"
+  - name: "Panorama - Production"
+    externalUrl: "https://panorama.hmcts.net"
+    internalUrl: "https://panorama.hmcts.net"
+    identifierUrls:
+      - "https://panorama.hmcts.net"
+      - "https://panorama.hmcts.net:443/SAML20/SP"
+      - "https://panorama-prod-uks-0.platform.hmcts.net"
+      - "https://panorama-prod-uks-0.platform.hmcts.net:443/SAML20/SP"
+      - "https://panorama-prod-uks-1.platform.hmcts.net"
+      - "https://panorama-prod-uks-1.platform.hmcts.net:443/SAML20/SP"
+    redirectUrls:
+      - "https://panorama.hmcts.net/"
+      - "https://panorama.hmcts.net:443/SAML20/SP/ACS"
+      - "https://panorama-prod-uks-0.platform.hmcts.net"
+      - "https://panorama-prod-uks-0.platform.hmcts.net:443/SAML20/SP/ACS"
+      - "https://panorama-prod-uks-1.platform.hmcts.net"
+      - "https://panorama-prod-uks-1.platform.hmcts.net:443/SAML20/SP/ACS"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/paloalto.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - dcd_team_secops_v2
+      - DTS Firewall Readers
+    appRoles:
+      - displayName: monitor_readonly
+        description: secops readonly role
+        value: monitor_readonly
+        id: 03C3F6E2-8D74-4DF7-9AED-60036F1E0400
+        groups:
+          - "dcd_team_secops_v2"
+          - "DTS Firewall Readers"
+      - displayName: adminrole
+        description: PlatformOps admin role
+        value: adminrole
+        id: 62219C28-B116-4DE9-B831-4CE38E1D6F63
+        groups:
+          - "DTS Platform Operations"
+    tls:
+      key_vault_name: "acmedtscftsboxintsvc"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
   - name: "Backstage - PTL"
     externalUrl: "https://backstage.hmcts.net"
     internalUrl: "https://backstage.hmcts.net"
