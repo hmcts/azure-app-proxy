@@ -266,14 +266,15 @@ apps:
   - name: "Panorama - Sandbox"
     externalUrl: "https://panorama-sandbox.hmcts.net"
     internalUrl: "https://panorama-sandbox.hmcts.net"
-    redirectUrls:
-      - "https://panorama-sandbox.hmcts.net/"
-      - "https://panorama-sandbox.hmcts.net/php/login.php"
+    identifierUrls:
+      - "https://panorama-sandbox.hmcts.net"
       - "https://panorama-sandbox.hmcts.net:443/SAML20/SP"
-      - "https://panorama-sandbox.hmcts.net:443/SAML20/SP/ACS"
-      - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net/"
-      - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net/php/login.php"
+      - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net"
       - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net:443/SAML20/SP"
+    redirectUrls:
+      - "https://panorama-sandbox.hmcts.net"
+      - "https://panorama-sandbox.hmcts.net:443/SAML20/SP/ACS"
+      - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net"
       - "https://panorama-sbox-uks-0.sandbox.platform.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/paloalto.png
     userAssignmentRequired: false
