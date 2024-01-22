@@ -338,7 +338,7 @@ apps:
         groups:
           - "DTS Platform Operations"
     tls:
-      key_vault_name: "acmedtscftsboxintsvc"
+      key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Backstage - PTL"
