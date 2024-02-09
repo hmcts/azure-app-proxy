@@ -367,7 +367,7 @@ apps:
       name: "wildcard-hmcts-net"
   - name: "ipam"
     externalUrl: "https://ipam.hmcts.net"
-    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/ipam-logo.png
     userAssignmentRequired: false
     appRoleAssignments:
       - DTS CFT Developers
