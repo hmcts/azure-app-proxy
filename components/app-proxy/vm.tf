@@ -66,7 +66,7 @@ module "virtual_machine" {
   dynatrace_token            = data.azurerm_key_vault_secret.dynatrace_token.value
 
   # Tenable
-  nessus_install = true
+  nessus_install = false
   nessus_server  = var.nessus_server
   nessus_key     = data.azurerm_key_vault_secret.nessus_key.value
   nessus_groups  = var.nessus_groups
