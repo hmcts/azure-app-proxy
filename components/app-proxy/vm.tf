@@ -53,7 +53,7 @@ module "virtual_machine" {
   vm_availabilty_zones = count.index % 3 + 1
 
   # Splunk
-  install_splunk_uf   = false
+  install_splunk_uf   = true
   splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
   splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
@@ -66,7 +66,7 @@ module "virtual_machine" {
   dynatrace_token            = data.azurerm_key_vault_secret.dynatrace_token.value
 
   # Tenable
-  nessus_install = false
+  nessus_install = true
   nessus_server  = var.nessus_server
   nessus_key     = data.azurerm_key_vault_secret.nessus_key.value
   nessus_groups  = var.nessus_groups
