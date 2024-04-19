@@ -53,7 +53,7 @@ module "virtual_machine" {
   vm_availabilty_zones = count.index % 3 + 1
 
   # Splunk
-  install_splunk_uf   = true
+  install_splunk_uf   = false
   splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
   splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
