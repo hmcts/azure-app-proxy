@@ -93,6 +93,7 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+              terraformEnvironmentVariables:
 
   - stage: registerapps
     dependsOn: "dns_registration"
