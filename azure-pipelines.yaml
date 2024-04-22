@@ -94,7 +94,6 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               terraformEnvironmentVariables:
-                TF_LOG: TRACE
 
   - stage: registerapps
     dependsOn: "dns_registration"
