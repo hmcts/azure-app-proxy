@@ -43,10 +43,10 @@ $AppProxyFolder = "C:\Program Files\Microsoft AAD App Proxy Connector"
 
 $attempts = 0
 # it takes a bit of time for the application proxy folder to get created
-while (-not(Test-Path -Path $AppProxyFolder)) {
+while (-not(Test-Path -Path $AppProxyFolder\Modules)) {
     $attempts++
     Write-Host "App Proxy folder not found, sleeping for 5 seconds"
-    Start-Sleep -Seconds 5
+    Start-Sleep -Seconds 10
 
     if ($attempts -gt 6) {
         Write-Host "App Proxy folder not found after 30 seconds, exiting"
