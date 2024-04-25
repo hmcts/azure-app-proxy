@@ -39,9 +39,9 @@ module "virtual_machine" {
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
   }
-  source  = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-17050-Upgrading-splunk-usf-version"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-17050-Upgrading-splunk-usf-version"
   for_each = local.app_proxy_vm_instances
-  vm_type = var.os_type
+  vm_type  = var.os_type
   # 15 Char name limit
   vm_name           = each.key
   vm_resource_group = azurerm_resource_group.this.name
@@ -78,14 +78,14 @@ module "virtual_machine" {
   # Custom app-proxy script
   # custom_script_extension_name = "${each.value}-onboarding"
   custom_script_extension_name = "app-proxy-onboarding-0${element(flatten(regexall("([0-9]+)$", each.key)), 0)}"
-  
+
   # update to point to branch
   additional_script_uri  = var.additional_script_uri
   additional_script_name = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Username ${data.azurerm_key_vault_secret.vm_user_email.value} -Password ${data.azurerm_key_vault_secret.vm_user_password.value}"
 
   privateip_allocation           = "Dynamic"
   accelerated_networking_enabled = true
-  tags                           = each.value == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
+  tags                           = each.key == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
 }
 
 data "azurerm_client_config" "this" {}
