@@ -39,7 +39,7 @@ curl.exe https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3f
 
 .\installer.exe REGISTERCONNECTOR="false" /q
 
-$AppProxyFolder = "C:\Program Files\Microsoft AAD App Proxy Connector"
+$AppProxyFolder = "C:\Program Files\Microsoft Entra private network connector"
 
 $attempts = 0
 # it takes a bit of time for the application proxy folder to get created
@@ -57,4 +57,4 @@ while (-not(Test-Path -Path $AppProxyFolder\Modules)) {
 cd $AppProxyFolder
 $SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force
 
-.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy
+.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy
