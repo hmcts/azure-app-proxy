@@ -57,4 +57,4 @@ while (-not(Test-Path -Path $AppProxyFolder\Modules)) {
 cd $AppProxyFolder
 $SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force
 
-.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "MicrosoftEntraPrivateNetworkConnectorPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxyxs
+.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "MicrosoftEntraPrivateNetworkConnectorPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy
