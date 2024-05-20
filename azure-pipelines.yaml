@@ -93,6 +93,8 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+              applyCommandOptions: >
+                -target="app-proxy-1"
 
   - stage: registerapps
     dependsOn: "dns_registration"
