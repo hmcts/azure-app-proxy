@@ -93,6 +93,8 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+              planCommandOptions: >
+                -target='module.virtual_machine["app-proxy-1"].azurerm_windows_virtual_machine.winvm[0]'
               applyCommandOptions: >
                 -target='module.virtual_machine["app-proxy-1"].azurerm_windows_virtual_machine.winvm[0]'
 
