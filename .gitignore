@@ -49,3 +49,4 @@ lib/*.js
 coverage/
 node_modules/*
 yarn.lock
+.idea/

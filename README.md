@@ -51,3 +51,5 @@ To connect you will need to be on one of the bastions and the VPN
 - [How to automate Azure AD Application Proxy? - Blog by timja](https://blog.timja.dev/azuread-app-proxy/)
 - [How to automate Azure AD Application Proxy? - Part 2 - Blog by timja](https://blog.timja.dev/how-to-automate-azure-ad-application-proxy-part-2/)
 - [Terraform tracking issue](https://github.com/hashicorp/terraform-provider-azuread/issues/7#issuecomment-1581102984)
+
+
