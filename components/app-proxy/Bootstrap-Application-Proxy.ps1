@@ -37,7 +37,7 @@ try {
 
 curl.exe https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/DownloadConnectorInstaller -o installer.exe
 
-Write-Host "==== Installing app proxy package ===="
+Write-Host "Installing app proxy package"
 .\installer.exe REGISTERCONNECTOR="false" /q
 
 $AppProxyFolder = "C:\Program Files\Microsoft Entra private network connector"
