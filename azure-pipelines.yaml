@@ -94,9 +94,9 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               planCommandOptions: >
-                -target="module.virtual_machine[\"app-proxy-1\"].azurerm_windows_virtual_machine.winvm[0]"
+                -target="module.virtual_machine[\"app-proxy-1\"].azurerm_windows_virtual_machine.winvm[0]" -target="module.virtual_machine[\"app-proxy-1\"].module.vm-bootstrap[0].azurerm_virtual_machine_extension.custom_script[0]"
               applyCommandOptions: >
-                -target="module.virtual_machine[\"app-proxy-1\"].azurerm_windows_virtual_machine.winvm[0]"
+                -target="module.virtual_machine[\"app-proxy-1\"].azurerm_windows_virtual_machine.winvm[0]" -target="module.virtual_machine[\"app-proxy-1\"].module.vm-bootstrap[0].azurerm_virtual_machine_extension.custom_script[0]"
 
   - stage: registerapps
     dependsOn: "dns_registration"
