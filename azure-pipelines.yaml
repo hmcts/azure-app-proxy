@@ -13,7 +13,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/dtspo-17345-reinstate-nagger-jg
+    ref: refs/heads/dtspo-17345-reinstate-nagger-dw
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
