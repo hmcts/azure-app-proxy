@@ -19,6 +19,7 @@ resources:
 
 
 
+
 variables:
   - name: timeoutInMinutes
     value: 60
