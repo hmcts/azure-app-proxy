@@ -27,20 +27,6 @@ apps:
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
-  - name: "Incident API Test"
-    externalUrl: "https://incident-api-ek.hmcts.net"
-    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
-    appRoleAssignments:
-      - DTS CFT Developers
-      - DTS SDS Developers
-      - DTS Platform Operations
-    internalUrl: "https://response-api-ek-slack.platform.hmcts.net/"
-    userAssignmentRequired: false
-    tls:
-      key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-hmcts-net"
-    externalAuthenticationType: "passthru"
-    hideApp: true
   - name: "CFT Jenkins - SonarQube"
     externalUrl: "https://cft-sonarqube-webhook.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
