@@ -28,13 +28,13 @@ apps:
     externalAuthenticationType: "passthru"
     hideApp: true
   - name: "Incident API - Sandbox"
-    externalUrl: "https://sandbox-incident-api.hmcts.net"
+    externalUrl: "https://incident-api-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
     appRoleAssignments:
       - DTS CFT Developers
       - DTS SDS Developers
       - DTS Platform Operations
-    internalUrl: "https://sandbox-response-api-slack.platform.hmcts.net/"
+    internalUrl: "https://response-api-slack.sandbox.platform.hmcts.net/"
     userAssignmentRequired: false
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
