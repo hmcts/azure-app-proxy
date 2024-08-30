@@ -27,6 +27,18 @@ apps:
       name: "wildcard-hmcts-net"
     externalAuthenticationType: "passthru"
     hideApp: true
+  - name: "Incident Sandbox"
+    externalUrl: "https://incidents-sandbox.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+      - DTS Platform Operations
+    internalUrl: "https://response.sandbox.platform.hmcts.net/"
+    userAssignmentRequired: false
+    tls:
+      key_vault_name: "acmedtscftsboxintsvc
+      name: "wildcard-hmcts-net"
   - name: "Incident API - Sandbox"
     externalUrl: "https://incident-api-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/incident-bot.png
