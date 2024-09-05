@@ -308,7 +308,7 @@ apps:
           - "DTS Platform Operations"
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
-      name: "wildcard-hmcts-net"
+      name: "wildcard-sandbox-platform-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Panorama - Production"
     externalUrl: "https://panorama.hmcts.net"
