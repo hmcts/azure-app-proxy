@@ -349,7 +349,7 @@ apps:
           - "DTS Platform Operations"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-hmcts-net"
+      name: "panorama-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Backstage - PTL"
     externalUrl: "https://backstage.hmcts.net"
