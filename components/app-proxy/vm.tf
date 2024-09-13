@@ -87,9 +87,9 @@ module "virtual_machine" {
   additional_script_uri  = var.additional_script_uri
   additional_script_name = "${var.additional_script_name} -TenantId ${data.azurerm_client_config.this.tenant_id} -Username ${data.azurerm_key_vault_secret.vm_user_email.value} -Password ${data.azurerm_key_vault_secret.vm_user_password.value}"
 
-  privateip_allocation           = "Dynamic"
-  accelerated_networking_enabled = true
-  tags                           = each.key == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
+  privateip_allocation          = "Dynamic"
+  enable_accelerated_networking = true
+  tags                          = each.key == 2 ? module.shutdowntags.common_tags : module.tags.common_tags
 }
 
 data "azurerm_client_config" "this" {}
