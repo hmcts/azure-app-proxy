@@ -55,10 +55,3 @@ variable "cnp_vault_rg" {}
 variable "autoShutdown" {
   default = true
 }
-
-# Azure Monitor
-variable "install_azure_monitor" {
-  description = "value to determine if the Azure Monitor Agent extension should be installed on the VM."
-  type        = bool
-  default     = false
-}

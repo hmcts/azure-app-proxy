@@ -38,9 +38,8 @@ module "virtual_machine" {
     azurerm     = azurerm
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
-    azurerm.dcr = azurerm.dcr
   }
-  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=ama-extension"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-17050-Upgrading-splunk-usf-version"
   for_each = local.app_proxy_vm_instances
   vm_type  = var.os_type
   # 15 Char name limit
@@ -75,9 +74,6 @@ module "virtual_machine" {
   nessus_server  = var.nessus_server
   nessus_key     = data.azurerm_key_vault_secret.nessus_key.value
   nessus_groups  = var.nessus_groups
-
-  # Azure Monitor
-  install_azure_monitor = var.install_azure_monitor
 
   # Custom app-proxy script
   # custom_script_extension_name = "${each.value}-onboarding"
