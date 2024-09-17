@@ -63,13 +63,4 @@ while (-not(Test-Path -Path $AppProxyFolder\Modules)) {
 cd $AppProxyFolder
 $SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force
 
-# Increase timeout for the registration process
-$timeout = New-TimeSpan -Minutes 10
-
-try {
-    .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "MicrosoftEntraPrivateNetworkConnectorPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy -Timeout $timeout
-    Write-Host "Registration completed successfully"
-} catch {
-    Write-Host "Error occurred during registration:`n$($_.Exception.Message)"
-    exit 1
-}
+.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "MicrosoftEntraPrivateNetworkConnectorPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy
