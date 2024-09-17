@@ -24,6 +24,11 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
 
 Set-Alias -Name az -Value "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin\az.cmd"
+
+# Clear az login accounts
+az account clear
+# Set core.enable_broker_on_windows to false to avoid login error
+az config set core.enable_broker_on_windows=false
 # Login as app-proxy user
 az login --username $Username --password $Password --allow-no-subscriptions
 # Get account token
