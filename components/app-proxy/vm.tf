@@ -38,8 +38,9 @@ module "virtual_machine" {
     azurerm     = azurerm
     azurerm.cnp = azurerm.cnp
     azurerm.soc = azurerm.soc
+    azurerm.dcr = azurerm.dcr
   }
-  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-17050-Upgrading-splunk-usf-version"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=ama-extension"
   for_each = local.app_proxy_vm_instances
   vm_type  = var.os_type
   # 15 Char name limit
