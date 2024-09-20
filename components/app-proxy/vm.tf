@@ -55,7 +55,8 @@ module "virtual_machine" {
   vm_size           = "Standard_D2ds_v5"
   vm_version        = "latest"
   # 3 is max availability zones - round robin between them
-  vm_availabilty_zones = tonumber(element(flatten(regexall("([0-9]+)$", each.key)), 0)) + 1
+  vm_availabilty_zones    = tonumber(element(flatten(regexall("([0-9]+)$", each.key)), 0)) + 1
+  systemassigned_identity = true
 
   # Splunk
   install_splunk_uf   = true
