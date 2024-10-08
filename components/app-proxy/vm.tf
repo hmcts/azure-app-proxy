@@ -40,7 +40,7 @@ module "virtual_machine" {
     azurerm.soc = azurerm.soc
     azurerm.dcr = azurerm.dcr
   }
-  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=ama-extension"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
   for_each = local.app_proxy_vm_instances
   vm_type  = var.os_type
   # 15 Char name limit
