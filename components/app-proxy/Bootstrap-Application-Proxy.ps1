@@ -64,3 +64,57 @@ cd $AppProxyFolder
 $SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force
 
 .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Entra private network connector\Modules\" -moduleName "MicrosoftEntraPrivateNetworkConnectorPSModule" -Authenticationmode Token -Token $SecureToken -TenantId $TenantId -Feature ApplicationProxy
+
+
+# Create Scheduled task to restart the WAPCSvc service
+
+
+# Define the log folder and log file path
+$logFolderPath = "C:\Temp\Logs"
+$logFilePath = "$logFolderPath\WAPCSvcCheck.log"
+
+# Define the URL for the script
+$scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/CheckAndStartWAPCSvc.ps1"
+
+# Define the location to save the downloaded script
+$downloadedScriptPath = "C:\Temp\CheckAndStartWAPCSvc.ps1"
+
+# Check if the directory exists, if not create it
+$downloadDirectory = "C:\Temp"
+if (-not (Test-Path -Path $downloadDirectory)) {
+    New-Item -Path $downloadDirectory -ItemType Directory
+}
+
+# Download the script from the URL
+Invoke-WebRequest -Uri $scriptUrl -OutFile $downloadedScriptPath
+
+# Function to create a scheduled task to run the downloaded script
+function CreateScheduledTask {
+    $taskName = "CheckAndStartWAPCSvc"
+    
+    # Check if the scheduled task already exists
+    $taskExists = Get-ScheduledTask | Where-Object { $_.TaskName -eq $taskName }
+    
+    if (-not $taskExists) {
+        # Create the trigger to run every 15 minutes
+        $trigger = New-ScheduledTaskTrigger -RepeatInterval (New-TimeSpan -Minutes 15) -AtStartup
+        
+        # Create the action to run the PowerShell script
+        $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$downloadedScriptPath`""
+        
+        # Define the principal (run as the SYSTEM account with highest privileges)
+        $principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+        
+        # Register the scheduled task
+        Register-ScheduledTask -Action $action -Trigger $trigger -Principal $principal -TaskName $taskName -Description "Check if WAPCSvc is running and start if not."
+        
+        # Output to confirm that the task was created
+        Write-Output "$(Get-Date): Scheduled task '$taskName' was created." >> $logFilePath
+    } else {
+        # Output if the task already exists
+        Write-Output "$(Get-Date): Scheduled task '$taskName' already exists." >> $logFilePath
+    }
+}
+
+# Create the scheduled task
+CreateScheduledTask
