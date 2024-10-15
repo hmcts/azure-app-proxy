@@ -74,7 +74,8 @@ $logFolderPath = "C:\Temp\Logs"
 $logFilePath = "$logFolderPath\WAPCSvcCheck.log"
 
 # Define the URL for the script
-$scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/CheckAndStartWAPCSvc.ps1"
+# $scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/CheckAndStartWAPCSvc.ps1"
+$scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/f7fda4209ec14c27fc1a36f4964e4799c791212f/components/app-proxy/CheckAndStartWAPCSvc.ps1"
 
 # Define the location to save the downloaded script
 $downloadedScriptPath = "C:\Temp\CheckAndStartWAPCSvc.ps1"
