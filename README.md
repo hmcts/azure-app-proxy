@@ -40,7 +40,33 @@ Only local accounts are supported for connecting to the connectors due to limita
 - Password: 
   - Retrieve with `az keyvault secret show --vault-name app-proxy --name vm-admin-password --query value -o tsv`
 
-To connect you will need to be on one of the bastions and the VPN
+To connect you will need to be on the VPN and have the Windows App (formerly Microsoft Remote Desktop) or another remote desktop client installed on your laptop.
+
+### Monitoring
+
+The main service that needs to be running on the VMs is the `Microsoft Entra private network connector` service (`WAPSVC`).
+
+If a ticket is raised about services behind app-proxy not working, then login to the servers and check this service is running.
+
+First, you may need to type `15` on the sconfig screen to get to powershell. Then run:
+
+`get-service WAPSVC`
+
+If it's not running, run:
+
+`start-service WAPSVC`
+
+A scheduled task has been created to check the status of this service every fifteen minutes and start it if it's not running.
+
+The code for this can be found in the powershell scripts in [app-proxy component](./components/app-proxy).
+
+The scheduled task is called [CheckAndStartWAPSvc](https://github.com/hmcts/azure-app-proxy/blob/6154229ddf3f4f824ee9d0490f6d2d5dd6dbddfa/components/app-proxy/Bootstrap-Application-Proxy.ps1#L97).
+
+The service is also being monitored by Dynatrace. Alerts will come through to Dynatrace if the service isn't running.
+
+Each of the servers has been added to a [host group](https://ebe20728.live.dynatrace.com/ui/deploymentstatus/oneagents?gtf=-30m&gf=all&filters=MONITORED_HOST-HOST_GROUP:HOST_GROUP-B5B74310283A91B2&recentlyConnected=false&contextEntityId=HOST-4EDFDD88994130A7) in dynatrace.
+
+The service monitoring has been configured under `Settings` > `OS Services Monitoring`. [Here](https://ebe20728.live.dynatrace.com/ui/settings/HOST-9ED6259CAEC8A700/builtin:os-services-monitoring?gtf=-30m&gf=all&id=5224f030-4961-3d99-94e4-8ee4aa539ee4) is an example for `app-proxy-0`.
 
 ## References
 
