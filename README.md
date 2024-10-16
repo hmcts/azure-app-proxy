@@ -40,7 +40,27 @@ Only local accounts are supported for connecting to the connectors due to limita
 - Password: 
   - Retrieve with `az keyvault secret show --vault-name app-proxy --name vm-admin-password --query value -o tsv`
 
-To connect you will need to be on one of the bastions and the VPN
+To connect you will need to be on the VPN and have the Windows App (formerly Microsoft Remote Desktop) or another remote desktop client installed on your laptop.
+
+### Monitoring
+
+The main service that needs to be running on the VMs is the `Microsoft Entra private network connector` service (`WAPSVC).
+
+If a ticket is raised about services behind app-proxy not working, then login to the servers and check this service is running.
+
+First, you may need to type `15` on the sconfig screen to get to powershell. Then run:
+
+`get-service WAPSVC`
+
+If it's not running, run:
+
+`start-service WAPSVC`
+
+A scheduled task has been created to check the status of this service every fifteen minutes and start it if it's not running.
+
+The code for this can be found in the powershell scripts in [app-proxy component](./components/app-proxy).
+
+The scheduled task is called [CheckAndStartWAPSvc](https://github.com/hmcts/azure-app-proxy/blob/6154229ddf3f4f824ee9d0490f6d2d5dd6dbddfa/components/app-proxy/Bootstrap-Application-Proxy.ps1#L97).
 
 ## References
 
