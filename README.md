@@ -66,7 +66,9 @@ The service is also being monitored by Dynatrace. Alerts will come through to Dy
 
 Each of the servers has been added to a [host group](https://ebe20728.live.dynatrace.com/ui/deploymentstatus/oneagents?gtf=-30m&gf=all&filters=MONITORED_HOST-HOST_GROUP:HOST_GROUP-B5B74310283A91B2&recentlyConnected=false&contextEntityId=HOST-4EDFDD88994130A7) in dynatrace.
 
-The service monitoring has been configured under `Settings` > `OS Services Monitoring`. [Here](https://ebe20728.live.dynatrace.com/ui/settings/HOST-9ED6259CAEC8A700/builtin:os-services-monitoring?gtf=-30m&gf=all&id=5224f030-4961-3d99-94e4-8ee4aa539ee4) is an example for `app-proxy-0`.
+The service monitoring has been configured under `Settings` > `OS Services Monitoring`. [Here](https://ebe20728.live.dynatrace.com/ui/settings/HOST_GROUP-B5B74310283A91B2/builtin:os-services-monitoring?gtf=-30m&gf=all&id=5ded9832-96f4-3d9a-bb9c-e39fe221ca85) is an example for `app-proxy-prod` host group.
+
+[Here](https://docs.dynatrace.com/docs/platform-modules/infrastructure-monitoring/hosts/monitoring/os-services#expand--host-group-level--2) is the documentation for this functionality.
 
 ## References
 
