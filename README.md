@@ -44,7 +44,7 @@ To connect you will need to be on the VPN and have the Windows App (formerly Mic
 
 ### Monitoring
 
-The main service that needs to be running on the VMs is the `Microsoft Entra private network connector` service (`WAPSVC).
+The main service that needs to be running on the VMs is the `Microsoft Entra private network connector` service (`WAPSVC`).
 
 If a ticket is raised about services behind app-proxy not working, then login to the servers and check this service is running.
 
