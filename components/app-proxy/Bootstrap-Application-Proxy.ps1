@@ -68,19 +68,22 @@ $SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force
 
 # Create Scheduled task to restart the WAPCSvc service
 
-
 # Define the log folder and log file path
 $logFolderPath = "C:\Temp\Logs"
 $logFilePath = "$logFolderPath\WAPCSvcCheck.log"
 
+# Ensure the Logs directory exists
+if (-not (Test-Path -Path $logFolderPath)) {
+    New-Item -Path $logFolderPath -ItemType Directory
+}
+
 # Define the URL for the script
-# $scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/CheckAndStartWAPCSvc.ps1"
-$scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/f7fda4209ec14c27fc1a36f4964e4799c791212f/components/app-proxy/CheckAndStartWAPCSvc.ps1"
+$scriptUrl = "https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/components/app-proxy/CheckAndStartWAPCSvc.ps1"
 
 # Define the location to save the downloaded script
 $downloadedScriptPath = "C:\Temp\CheckAndStartWAPCSvc.ps1"
 
-# Check if the directory exists, if not create it
+# Check if the Temp directory exists, if not create it
 $downloadDirectory = "C:\Temp"
 if (-not (Test-Path -Path $downloadDirectory)) {
     New-Item -Path $downloadDirectory -ItemType Directory
@@ -97,8 +100,8 @@ function CreateScheduledTask {
     $taskExists = Get-ScheduledTask | Where-Object { $_.TaskName -eq $taskName }
     
     if (-not $taskExists) {
-        # Create the trigger to run every 15 minutes
-        $trigger = New-ScheduledTaskTrigger -RepeatInterval (New-TimeSpan -Minutes 15) -AtStartup
+        # Create a time-based trigger to run the task every 15 minutes
+        $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 15) -RepetitionDuration (New-TimeSpan -Days 1)
         
         # Create the action to run the PowerShell script
         $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$downloadedScriptPath`""
