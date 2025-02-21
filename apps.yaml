@@ -290,7 +290,7 @@ apps:
     userAssignmentRequired: false
     appRoleAssignments:
       - DTS Platform Operations
-      - dcd_team_secops_v2
+      - dcd_team_secops_sc_v2
       - DTS Firewall Readers
     appRoles:
       - displayName: monitor_readonly
@@ -298,7 +298,7 @@ apps:
         value: monitor_readonly
         id: 550d1323-abda-4480-b058-4cb4f9b2cb46
         groups:
-          - "dcd_team_secops_v2"
+          - "dcd_team_secops_sc_v2"
           - "DTS Firewall Readers"
       - displayName: adminrole
         description: PlatformOps admin role
@@ -331,7 +331,7 @@ apps:
     userAssignmentRequired: false
     appRoleAssignments:
       - DTS Platform Operations
-      - dcd_team_secops_v2
+      - dcd_team_secops_sc_v2
       - DTS Firewall Readers
     appRoles:
       - displayName: monitor_readonly
@@ -339,7 +339,7 @@ apps:
         value: monitor_readonly
         id: 03c3f6e2-8d74-4df7-9aed-60036f1e0400
         groups:
-          - "dcd_team_secops_v2"
+          - "dcd_team_secops_sc_v2"
           - "DTS Firewall Readers"
       - displayName: adminrole
         description: PlatformOps admin role
