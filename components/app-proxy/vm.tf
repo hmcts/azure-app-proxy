@@ -40,7 +40,7 @@ module "virtual_machine" {
     azurerm.soc = azurerm.soc
     azurerm.dcr = azurerm.dcr
   }
-  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-24263-test-splunk-removal"
   for_each = local.app_proxy_vm_instances
   vm_type  = var.os_type
   # 15 Char name limit
@@ -57,12 +57,6 @@ module "virtual_machine" {
   # 3 is max availability zones - round robin between them
   vm_availabilty_zones    = tonumber(element(flatten(regexall("([0-9]+)$", each.key)), 0)) + 1
   systemassigned_identity = true
-
-  # Splunk
-  install_splunk_uf   = true
-  splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
-  splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
-  splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
 
   # Dynatrace
   install_dynatrace_oneagent = true
