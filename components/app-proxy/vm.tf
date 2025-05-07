@@ -40,7 +40,7 @@ module "virtual_machine" {
     azurerm.soc = azurerm.soc
     azurerm.dcr = azurerm.dcr
   }
-  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=master"
+  source   = "git::https://github.com/hmcts/terraform-module-virtual-machine.git?ref=DTSPO-24263-splunk-windows"
   for_each = local.app_proxy_vm_instances
   vm_type  = var.os_type
   # 15 Char name limit
