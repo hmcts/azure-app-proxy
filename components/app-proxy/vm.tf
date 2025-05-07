@@ -59,7 +59,7 @@ module "virtual_machine" {
   systemassigned_identity = true
 
   # Splunk
-  install_splunk_uf   = true
+  remove_splunk_uf    = true
   splunk_username     = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password     = data.azurerm_key_vault_secret.splunk_password.value
   splunk_pass4symmkey = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
