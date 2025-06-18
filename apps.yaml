@@ -375,6 +375,24 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
+  - name: "CFT NueVector - AAT 00"
+    externalUrl: "https://cft-neuvector-aat00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "https://cft-neuvector00.aat.platform.hmcts.net"
+    userAssignmentRequired: true
+    appRoleAssignments:
+      - DTS Neuvector Administrators
+      - DTS Neuvector Readers
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    externalAuthenticationType: "passthru"
+    hideApp: false
   - name: "ipam"
     externalUrl: "https://ipam.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/ipam-logo.png
