@@ -391,7 +391,6 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
-    externalAuthenticationType: "passthru"
     hideApp: false
   - name: "ipam"
     externalUrl: "https://ipam.hmcts.net"
