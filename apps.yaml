@@ -375,14 +375,13 @@ apps:
     tls:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
-  - name: "CFT NueVector - AAT 00"
+  - name: "CFT Neuvector - AAT 00"
     externalUrl: "https://cft-neuvector-aat00.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
     internalUrl: "https://cft-neuvector00.aat.platform.hmcts.net"
     userAssignmentRequired: true
     appRoleAssignments:
-      - DTS Neuvector Administrators
-      - DTS Neuvector Readers
+      - DTS Platform Operations
     graphApiPermissions:
         - "User.Read.All"
         - "Group.Read.All"
@@ -392,14 +391,13 @@ apps:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
     hideApp: false
-  - name: "CFT NueVector - AAT 01"
+  - name: "CFT Neuvector - AAT 01"
     externalUrl: "https://cft-neuvector-aat01.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
     internalUrl: "https://cft-neuvector01.aat.platform.hmcts.net"
     userAssignmentRequired: true
     appRoleAssignments:
-      - DTS Neuvector Administrators
-      - DTS Neuvector Readers
+      - DTS Platform Operations
     graphApiPermissions:
       - "User.Read.All"
       - "Group.Read.All"
