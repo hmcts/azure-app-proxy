@@ -427,7 +427,7 @@ apps:
     internalUrl: "https://sds-neuvector01.dev.platform.hmcts.net"
     userAssignmentRequired: true
     appRoleAssignments:
-      - DTS Neuvector Administrators
+      - DTS Platform Operations
     graphApiPermissions:
       - "User.Read.All"
       - "Group.Read.All"
