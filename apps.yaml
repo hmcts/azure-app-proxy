@@ -428,7 +428,6 @@ apps:
     userAssignmentRequired: true
     appRoleAssignments:
       - DTS Neuvector Administrators
-      - DTS Neuvector Readers
     graphApiPermissions:
       - "User.Read.All"
       - "Group.Read.All"
