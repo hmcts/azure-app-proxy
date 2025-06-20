@@ -419,3 +419,19 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     internalUrl: "https://ipam.hmcts.net/"
+  - name: "SDS Neuvector - DEV 01"
+    externalUrl: "https://sds-neuvector-dev01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "https://sds-neuvector01.dev.platform.hmcts.net"
+    userAssignmentRequired: true
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
