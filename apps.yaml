@@ -403,7 +403,7 @@ apps:
     internalUrl: "https://cft-neuvector01.aat.platform.hmcts.net"
     userAssignmentRequired: true
     redirectUrls:
-        - "https://cft-neuvector01.aat.platform.hmcts.net/token_auth_server"
+      - "https://cft-neuvector01.aat.platform.hmcts.net/token_auth_server"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
