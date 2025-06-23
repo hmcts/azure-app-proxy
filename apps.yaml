@@ -380,8 +380,6 @@ apps:
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
     internalUrl: "https://cft-neuvector00.aat.platform.hmcts.net"
     userAssignmentRequired: true
-    redirectUrls:
-      - "https://cft-neuvector00.aat.platform.hmcts.net/token_auth_server"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
@@ -402,8 +400,6 @@ apps:
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
     internalUrl: "https://cft-neuvector01.aat.platform.hmcts.net"
     userAssignmentRequired: true
-    redirectUrls:
-      - "https://cft-neuvector01.aat.platform.hmcts.net/token_auth_server"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
