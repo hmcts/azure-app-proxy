@@ -449,3 +449,192 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     internalUrl: "https://ipam.hmcts.net/"
+  - name: "SDS Neuvector - ITHC 00"
+    externalUrl: "https://sds-neuvector-ithc00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-ithc00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-ithc00.hmcts.net"
+        - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-ithc00.hmcts.net"
+        - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - Test 00"
+    externalUrl: "https://sds-neuvector-test00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-test00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-test00.hmcts.net"
+        - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-test00.hmcts.net"
+        - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - Test 01"
+    externalUrl: "https://sds-neuvector-test01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-test01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-test01.hmcts.net"
+        - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-test01.hmcts.net"
+        - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - STG 00"
+    externalUrl: "https://sds-neuvector-stg00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-stg00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-stg00.hmcts.net"
+        - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-stg00.hmcts.net"
+        - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - STG 01"
+    externalUrl: "https://sds-neuvector-stg01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-stg01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-stg01.hmcts.net"
+        - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-stg01.hmcts.net"
+        - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - Prod 00"
+    externalUrl: "https://sds-neuvector-00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-00.hmcts.net"
+        - "https://sds-neuvector-00.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-00.hmcts.net"
+        - "https://sds-neuvector-00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "SDS Neuvector - Prod 01"
+    externalUrl: "https://sds-neuvector-01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://sds-neuvector-01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+        - "https://sds-neuvector-01.hmcts.net"
+        - "https://sds-neuvector-01.hmcts.net/token_auth_server"
+    redirectUrls:
+        - "https://sds-neuvector-01.hmcts.net"
+        - "https://sds-neuvector-01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+        - "User.Read.All"
+        - "Group.Read.All"
+        - "People.Read.All"
+        - "offline_access"
+        - "email"
+        - "openid"
+        - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    hideApp: false
