@@ -383,13 +383,9 @@ apps:
     identifierUrls:
         - "https://cft-neuvector-aat00.hmcts.net"
         - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
-        - "https://cft-neuvector00.aat.platform.hmcts.net"
-        - "https://cft-neuvector00.aat.platform.hmcts.net/token_auth_server"
     redirectUrls:
       - "https://cft-neuvector-aat00.hmcts.net"
       - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
-      - "https://cft-neuvector00.aat.platform.hmcts.net"
-      - "https://cft-neuvector00.aat.platform.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
@@ -414,13 +410,9 @@ apps:
     identifierUrls:
       - "https://cft-neuvector-aat01.hmcts.net"
       - "https://cft-neuvector-aat01.hmcts.net/token_auth_server"
-      - "https://cft-neuvector01.aat.platform.hmcts.net"
-      - "https://cft-neuvector01.aat.platform.hmcts.net/token_auth_server"
     redirectUrls:
       - "https://cft-neuvector-aat01.hmcts.net"
       - "https://cft-neuvector-aat01.hmcts.net/token_auth_server"
-      - "https://cft-neuvector01.aat.platform.hmcts.net"
-      - "https://cft-neuvector01.aat.platform.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
