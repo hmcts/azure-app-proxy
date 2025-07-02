@@ -86,7 +86,7 @@ apps:
   - name: "CFT Jenkins - Sandbox"
     externalUrl: "https://sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
-    appRoleAssignments: 
+    appRoleAssignments:
     - DTS CFT Developers
     - DTS Platform Operations
     internalUrl: "https://sandbox-build.hmcts.net"
@@ -108,7 +108,7 @@ apps:
   - name: "CFT Jenkins - PTL"
     externalUrl: "https://build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
-    appRoleAssignments: 
+    appRoleAssignments:
     - DTS CFT Developers
     - DTS Platform Operations
     internalUrl: "https://build.hmcts.net"
@@ -140,7 +140,7 @@ apps:
   - name: "SDS Jenkins - Sandbox"
     externalUrl: "https://sds-sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
-    appRoleAssignments: 
+    appRoleAssignments:
     - DTS SDS Developers
     - DTS Platform Operations
     internalUrl: "https://sds-sandbox-build.hmcts.net"
@@ -172,7 +172,7 @@ apps:
   - name: "SDS Jenkins - PTL"
     externalUrl: "https://sds-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
-    appRoleAssignments: 
+    appRoleAssignments:
     - DTS SDS Developers
     - DTS Platform Operations
     internalUrl: "https://sds-build.hmcts.net"
@@ -378,13 +378,15 @@ apps:
   - name: "CFT Neuvector - AAT 00"
     externalUrl: "https://cft-neuvector-aat00.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
-    internalUrl: "https://cft-neuvector-aat00.hmcts.net"
+    internalUrl: "http://cft-neuvector-aat00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
         - "https://cft-neuvector-aat00.hmcts.net"
         - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
         - "https://cft-neuvector00.aat.platform.hmcts.net"
         - "https://cft-neuvector00.aat.platform.hmcts.net/token_auth_server"
+        - "http://cft-neuvector-aat00.hmcts.net"
+        - "http://cft-neuvector-aat00.hmcts.net/token_auth_server"
     redirectUrls:
       - "https://cft-neuvector-aat00.hmcts.net"
       - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
