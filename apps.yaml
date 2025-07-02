@@ -385,8 +385,6 @@ apps:
         - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
         - "https://cft-neuvector00.aat.platform.hmcts.net"
         - "https://cft-neuvector00.aat.platform.hmcts.net/token_auth_server"
-        - "http://cft-neuvector-aat00.hmcts.net"
-        - "http://cft-neuvector-aat00.hmcts.net/token_auth_server"
     redirectUrls:
       - "https://cft-neuvector-aat00.hmcts.net"
       - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
