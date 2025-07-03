@@ -429,6 +429,195 @@ apps:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-hmcts-net"
     hideApp: false
+  - name: "CFT Neuvector - ITHC 00"
+    externalUrl: "https://cft-neuvector-ithc00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-ithc00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-ithc00.hmcts.net"
+      - "https://cft-neuvector-ithc00.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-ithc00.hmcts.net"
+      - "https://cft-neuvector-ithc00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - Perftest 00"
+    externalUrl: "https://cft-neuvector-perftest00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-perftest00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-perftest00.hmcts.net"
+      - "https://cft-neuvector-perftest00.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-perftest00.hmcts.net"
+      - "https://cft-neuvector-perftest00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - Perftest 01"
+    externalUrl: "https://cft-neuvector-perftest01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-perftest01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-perftest01.hmcts.net"
+      - "https://cft-neuvector-perftest01.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-perftest01.hmcts.net"
+      - "https://cft-neuvector-perftest01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - Prod 00"
+    externalUrl: "https://cft-neuvector-prod00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-prod00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-prod00.hmcts.net"
+      - "https://cft-neuvector-prod00.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-prod00.hmcts.net"
+      - "https://cft-neuvector-prod00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - Prod 01"
+    externalUrl: "https://cft-neuvector-prod01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-prod01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-prod01.hmcts.net"
+      - "https://cft-neuvector-prod01.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-prod01.hmcts.net"
+      - "https://cft-neuvector-prod01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - PTL 00"
+    externalUrl: "https://cft-neuvector-ptl00.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-ptl00.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-ptl00.hmcts.net"
+      - "https://cft-neuvector-ptl00.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-ptl00.hmcts.net"
+      - "https://cft-neuvector-ptl00.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
+  - name: "CFT Neuvector - Preview 01"
+    externalUrl: "https://cft-neuvector-preview01.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
+    internalUrl: "http://cft-neuvector-preview01.hmcts.net"
+    userAssignmentRequired: true
+    identifierUrls:
+      - "https://cft-neuvector-preview01.hmcts.net"
+      - "https://cft-neuvector-preview01.hmcts.net/token_auth_server"
+    redirectUrls:
+      - "https://cft-neuvector-preview01.hmcts.net"
+      - "https://cft-neuvector-preview01.hmcts.net/token_auth_server"
+    preferredSingleSignOnMode: "saml"
+    appRoleAssignments:
+      - DTS Platform Operations
+    graphApiPermissions:
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    groupMembershipClaims: "SecurityGroup"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
+    hideApp: false
   - name: "ipam"
     externalUrl: "https://ipam.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/ipam-logo.png
