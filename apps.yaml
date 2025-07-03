@@ -405,7 +405,7 @@ apps:
   - name: "CFT Neuvector - AAT 01"
     externalUrl: "https://cft-neuvector-aat01.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/nuevector.png
-    internalUrl: "https://cft-neuvector-aat01.aat.platform.hmcts.net"
+    internalUrl: "http://cft-neuvector-aat01.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
       - "https://cft-neuvector-aat01.hmcts.net"
