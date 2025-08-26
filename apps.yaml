@@ -766,14 +766,14 @@ apps:
       name: "wildcard-hmcts-net"
     hideApp: false
   - name: "Cactus web - Dev"
-    externalUrl: "https://dev.cactus.web.hmcts.net"
-    internalUrl: "https://dev.cactus.web.hmcts.net"
+    externalUrl: "https://cactus-dev-web.hmcts.net"
+    internalUrl: "https://cactus-dev-web.hmcts.net"
     identifierUrls:
-      - "https://dev.cactus.web.hmcts.net"
-      - "https://dev.cactus.web.hmcts.net:443/SAML20/SP"
+      - "https://cactus-dev-web.hmcts.net"
+      - "https://cactus-dev-web.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://dev.cactus.web.hmcts.net"
-      - "https://dev.cactus.web.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-dev-web.hmcts.net"
+      - "https://cactus-dev-web.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
@@ -787,14 +787,14 @@ apps:
       name: "wildcard-platform-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus web - Staging"
-    externalUrl: "https://staging.cactus.web.hmcts.net"
-    internalUrl: "https://staging.cactus.web.hmcts.net"
+    externalUrl: "https://cactus-staging-web.hmcts.net"
+    internalUrl: "https://cactus-staging-web.hmcts.net"
     identifierUrls:
-      - "https://staging.cactus.web.hmcts.net"
-      - "https://staging.cactus.web.hmcts.net:443/SAML20/SP"
+      - "https://cactus-staging-web.hmcts.net"
+      - "https://cactus-staging-web.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://staging.cactus.web.hmcts.net"
-      - "https://staging.cactus.web.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-staging-web.hmcts.net"
+      - "https://cactus-staging-web.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
@@ -808,14 +808,14 @@ apps:
       name: "wildcard-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus web - Production"
-    externalUrl: "https://cactus.web.hmcts.net"
-    internalUrl: "https://cactus.web.hmcts.net"
+    externalUrl: "https://cactus-web.hmcts.net"
+    internalUrl: "https://cactus-web.hmcts.net"
     identifierUrls:
-      - "https://cactus.web.hmcts.net"
-      - "https://cactus.web.hmcts.net:443/SAML20/SP"
+      - "https://cactus-web.hmcts.net"
+      - "https://cactus-web.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://cactus.web.hmcts.net"
-      - "https://cactus.web.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-web.hmcts.net"
+      - "https://cactus-web.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
@@ -829,14 +829,14 @@ apps:
       name: "wildcard-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus admin - Dev"
-    externalUrl: "https://dev.cactus.admin.hmcts.net"
-    internalUrl: "https://dev.cactus.admin.hmcts.net"
+    externalUrl: "https://cactus-dev-admin.hmcts.net"
+    internalUrl: "https://cactus-dev-admin.hmcts.net"
     identifierUrls:
-      - "https://dev.cactus.admin.hmcts.net"
-      - "https://dev.cactus.admin.hmcts.net:443/SAML20/SP"
+      - "https://cactus-dev-admin.hmcts.net"
+      - "https://cactus-dev-admin.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://dev.cactus.admin.hmcts.net"
-      - "https://dev.cactus.admin.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-dev-admin.hmcts.net"
+      - "https://cactus-dev-admin.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
@@ -850,14 +850,14 @@ apps:
       name: "wildcard-platform-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus admin - Staging"
-    externalUrl: "https://staging.cactus.admin.hmcts.net"
-    internalUrl: "https://staging.cactus.admin.hmcts.net"
+    externalUrl: "https://cactus-staging-admin.hmcts.net"
+    internalUrl: "https://cactus-staging-admin.hmcts.net"
     identifierUrls:
-      - "https://staging.cactus.admin.hmcts.net"
-      - "https://staging.cactus.admin.hmcts.net:443/SAML20/SP"
+      - "https://cactus-staging-admin.hmcts.net"
+      - "https://cactus-staging-admin.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://staging.cactus.admin.hmcts.net"
-      - "https://staging.cactus.admin.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-staging-admin.hmcts.net"
+      - "https://cactus-staging-admin.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
@@ -871,14 +871,14 @@ apps:
       name: "wildcard-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus admin - Production"
-    externalUrl: "https://cactus.admin.hmcts.net"
-    internalUrl: "https://cactus.admin.hmcts.net"
+    externalUrl: "https://cactus-admin.hmcts.net"
+    internalUrl: "https://cactus-admin.hmcts.net"
     identifierUrls:
-      - "https://cactus.admin.hmcts.net"
-      - "https://cactus.admin.hmcts.net:443/SAML20/SP"
+      - "https://cactus-admin.hmcts.net"
+      - "https://cactus-admin.hmcts.net:443/SAML20/SP"
     redirectUrls:
-      - "https://cactus.admin.hmcts.net"
-      - "https://cactus.admin.hmcts.net:443/SAML20/SP/ACS"
+      - "https://cactus-admin.hmcts.net"
+      - "https://cactus-admin.hmcts.net:443/SAML20/SP/ACS"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
     userAssignmentRequired: true
     appRoleAssignments:
