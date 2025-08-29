@@ -765,3 +765,105 @@ apps:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     hideApp: false
+  - name: "Cactus web - Dev"
+    externalUrl: "https://cactus.dev.apps.hmcts.net"
+    internalUrl: "https://cactus-dev-web-wa01.azurewebsites.net"
+    identifierUrls:
+    redirectUrls: 
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Cactususers-dev
+      - cactususers
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus web - Staging"
+    externalUrl: "https://cactus.staging.apps.hmcts.net"
+    internalUrl: "https://cactus-staging-web-wa01.azurewebsites.net"
+    identifierUrls:
+    redirectUrls:
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Cactususers-stg
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus web - Production"
+    externalUrl: "https://cactus.apps.hmcts.net"
+    internalUrl: "https://cactus-prod-web-wa01.azurewebsites.net"
+    identifierUrls:
+    redirectUrls:
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Dev"
+    externalUrl: "https://cactus-admin.dev.apps.hmcts.net"
+    internalUrl: "https://cactus-dev-admin-wa02.azurewebsites.net"
+    identifierUrls:
+    redirectUrls:
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS CactusAdmins-dev
+      - CactusAdmins
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Staging"
+    externalUrl: "https://cactus-admin.staging.apps.hmcts.net"
+    internalUrl: "https://cactus-staging-admin-wa02.azurewebsites.net"
+    identifierUrls:
+    redirectUrls:
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS CactusAdmins-stg
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Production"
+    externalUrl: "https://cactus-admin.apps.hmcts.net"
+    internalUrl: "https://cactus-prod-admin-wa02.azurewebsites.net"
+    identifierUrls:
+    redirectUrls:
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+    graphApiPermissions:
+      - "User.Read"      
+    tls:
+      key_vault_name: "acmedtssdsptl"
+      name: "wildcard-hmcts-net"
+    preferredSingleSignOnMode: "saml"
