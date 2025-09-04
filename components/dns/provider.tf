@@ -6,7 +6,7 @@ provider "azurerm" {
 terraform {
   backend "azurerm" {}
 
-  required_version = "1.5.2"
+  required_version = "1.13.1"
 
   required_providers {
     azurerm = {
