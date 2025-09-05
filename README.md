@@ -70,6 +70,18 @@ The service monitoring has been configured under `Settings` > `OS Services Monit
 
 [Here](https://docs.dynatrace.com/docs/platform-modules/infrastructure-monitoring/hosts/monitoring/os-services#expand--host-group-level--2) is the documentation for this functionality.
 
+### Basic Troubleshooting steps
+
+Some example commands we have ran to check the status of the services in the past include:
+
+- `Get-process`
+- `Get-service`
+- We can also filter for a specific app proxy error by using:
+`$A = Get-Eventlog application -source "Microsoft AAD Application Proxy Connector" -EntryType "Error" -Newest 1`
+Followed by:
+` $A | Format-list -Property *`
+
+
 ## References
 
 - [Plan an Azure AD Application Proxy deployment](https://learn.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy-deployment-plan)
