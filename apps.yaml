@@ -779,7 +779,7 @@ apps:
       - "User.Read"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-apps-hmcts-net"
+      name: "wildcard-dev-apps-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus web - Staging"
     externalUrl: "https://cactus.staging.apps.hmcts.net"
@@ -794,7 +794,7 @@ apps:
       - "User.Read"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-apps-hmcts-net"
+      name: "wildcard-staging-apps-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus web - Production"
     externalUrl: "https://cactus.apps.hmcts.net"
@@ -824,7 +824,7 @@ apps:
       - "User.Read"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-apps-hmcts-net"
+      name: "wildcard-dev-apps-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus admin - Staging"
     externalUrl: "https://cactus-admin.staging.apps.hmcts.net"
@@ -839,7 +839,7 @@ apps:
       - "User.Read"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
-      name: "wildcard-apps-hmcts-net"
+      name: "wildcard-staging-apps-hmcts-net"
     preferredSingleSignOnMode: "saml"
   - name: "Cactus admin - Production"
     externalUrl: "https://cactus-admin.apps.hmcts.net"
