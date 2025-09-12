@@ -258,7 +258,6 @@ apps:
       name: "wildcard-hmcts-net"
     internalUrl: "https://splunk-es-prod-vm00.platform.hmcts.net:8000/"
   - name: "Backstage - Sandbox"
-    externalUrl: "https://backstage-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
     userAssignmentRequired: false
     appRoleAssignments:
@@ -269,10 +268,19 @@ apps:
       - "User.Read.All"
       - "Group.Read.All"
       - "People.Read.All"
+      - "User.Read"
+      - "email"
+      - "openid"
+      - "profile"
+      - "offline_access"
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
-    internalUrl: "https://backstage-sandbox.hmcts.net/"
+    internalUrl: "https://backstage-sandbox.hmcts.net"
+    externalUrl: "https://backstage-sandbox.hmcts.net"
+    redirectUrls:
+      - "https://backstage-sandbox.hmcts.net"
+      - "https://backstage-sandbox.hmcts.net/api/auth/microsoft/handler/frame"
   - name: "Panorama - Sandbox"
     externalUrl: "https://panorama-sandbox.hmcts.net"
     internalUrl: "https://panorama-sandbox.hmcts.net"
