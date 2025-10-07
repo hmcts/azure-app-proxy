@@ -863,3 +863,26 @@ apps:
       key_vault_name: "acmedtscftptlintsvc"
       name: "wildcard-apps-hmcts-net"
     preferredSingleSignOnMode: "saml"
+  - name: "TF Plan Viewer - PTL"
+    externalUrl: "https://tfplan-viewer.hmcts.net"
+    internalUrl: "https://tfplan-viewer.platform.hmcts.net"
+    redirectUrls:
+      - "https://tfplan-viewer.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/terraform.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+    graphApiPermissions:
+      - "User.Read.All"
+      - "User.Read"
+      - "Group.Read.All"
+      - "GroupMember.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"
