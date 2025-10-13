@@ -8,7 +8,6 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "soc"
   features {}
-  skip_provider_registration = true
   subscription_id            = "8ae5b3b6-0b12-4888-b894-4cec33c92292"
 }
 
@@ -16,7 +15,6 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "cnp"
   features {}
-  skip_provider_registration = true
   subscription_id            = var.cnp_vault_sub
 }
 
