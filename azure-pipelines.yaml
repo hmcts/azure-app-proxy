@@ -7,7 +7,7 @@ schedules:
     displayName: Runs 6 AM Mon-Fri
     branches:
       include:
-        - platops/dstpo28878nodeforgefix
+        - main
     always: 'true'
 resources:
   repositories:
