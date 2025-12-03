@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - platops/dstpo28878nodeforgefix
+      - main
 schedules:
   - cron: '0 6 * * Mon-Fri'
     displayName: Runs 6 AM Mon-Fri
