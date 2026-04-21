@@ -87,8 +87,8 @@ apps:
     externalUrl: "https://sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
     appRoleAssignments:
-    - DTS CFT Developers
-    - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Platform Operations
     internalUrl: "https://sandbox-build.hmcts.net"
     userAssignmentRequired: false
     tls:
@@ -109,8 +109,8 @@ apps:
     externalUrl: "https://build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
     appRoleAssignments:
-    - DTS CFT Developers
-    - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Platform Operations
     internalUrl: "https://build.hmcts.net"
     userAssignmentRequired: false
     tls:
@@ -141,8 +141,8 @@ apps:
     externalUrl: "https://sds-sandbox-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
     appRoleAssignments:
-    - DTS SDS Developers
-    - DTS Platform Operations
+      - DTS SDS Developers
+      - DTS Platform Operations
     internalUrl: "https://sds-sandbox-build.hmcts.net"
     userAssignmentRequired: true
     tls:
@@ -173,8 +173,8 @@ apps:
     externalUrl: "https://sds-build.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/jenkins.png
     appRoleAssignments:
-    - DTS SDS Developers
-    - DTS Platform Operations
+      - DTS SDS Developers
+      - DTS Platform Operations
     internalUrl: "https://sds-build.hmcts.net"
     userAssignmentRequired: true
     tls:
@@ -258,7 +258,6 @@ apps:
       name: "wildcard-hmcts-net"
     internalUrl: "https://splunk-es-prod-vm00.platform.hmcts.net:8000/"
   - name: "Backstage - Sandbox"
-    externalUrl: "https://backstage-sandbox.hmcts.net"
     logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/backstage.png
     userAssignmentRequired: false
     appRoleAssignments:
@@ -269,10 +268,19 @@ apps:
       - "User.Read.All"
       - "Group.Read.All"
       - "People.Read.All"
+      - "User.Read"
+      - "email"
+      - "openid"
+      - "profile"
+      - "offline_access"
     tls:
       key_vault_name: "acmedtscftsboxintsvc"
       name: "wildcard-hmcts-net"
-    internalUrl: "https://backstage-sandbox.hmcts.net/"
+    internalUrl: "https://backstage-sandbox.hmcts.net"
+    externalUrl: "https://backstage-sandbox.hmcts.net"
+    redirectUrls:
+      - "https://backstage-sandbox.hmcts.net"
+      - "https://backstage-sandbox.hmcts.net/api/auth/microsoft/handler/frame"
   - name: "Panorama - Sandbox"
     externalUrl: "https://panorama-sandbox.hmcts.net"
     internalUrl: "https://panorama-sandbox.hmcts.net"
@@ -381,8 +389,8 @@ apps:
     internalUrl: "http://cft-neuvector-aat00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://cft-neuvector-aat00.hmcts.net"
-        - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
+      - "https://cft-neuvector-aat00.hmcts.net"
+      - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
     redirectUrls:
       - "https://cft-neuvector-aat00.hmcts.net"
       - "https://cft-neuvector-aat00.hmcts.net/token_auth_server"
@@ -390,13 +398,13 @@ apps:
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtscftptlintsvc"
@@ -609,22 +617,22 @@ apps:
     internalUrl: "http://sds-neuvector-ithc00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-ithc00.hmcts.net"
-        - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-ithc00.hmcts.net"
+      - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-ithc00.hmcts.net"
-        - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-ithc00.hmcts.net"
+      - "https://sds-neuvector-ithc00.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -636,22 +644,22 @@ apps:
     internalUrl: "http://sds-neuvector-test00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-test00.hmcts.net"
-        - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-test00.hmcts.net"
+      - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-test00.hmcts.net"
-        - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-test00.hmcts.net"
+      - "https://sds-neuvector-test00.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -663,22 +671,22 @@ apps:
     internalUrl: "http://sds-neuvector-test01.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-test01.hmcts.net"
-        - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-test01.hmcts.net"
+      - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-test01.hmcts.net"
-        - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-test01.hmcts.net"
+      - "https://sds-neuvector-test01.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -690,22 +698,22 @@ apps:
     internalUrl: "http://sds-neuvector-stg00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-stg00.hmcts.net"
-        - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-stg00.hmcts.net"
+      - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-stg00.hmcts.net"
-        - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-stg00.hmcts.net"
+      - "https://sds-neuvector-stg00.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -717,22 +725,22 @@ apps:
     internalUrl: "http://sds-neuvector-stg01.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-stg01.hmcts.net"
-        - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-stg01.hmcts.net"
+      - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-stg01.hmcts.net"
-        - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-stg01.hmcts.net"
+      - "https://sds-neuvector-stg01.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -744,22 +752,22 @@ apps:
     internalUrl: "http://sds-neuvector-00.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-00.hmcts.net"
-        - "https://sds-neuvector-00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-00.hmcts.net"
+      - "https://sds-neuvector-00.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-00.hmcts.net"
-        - "https://sds-neuvector-00.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-00.hmcts.net"
+      - "https://sds-neuvector-00.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
@@ -771,24 +779,137 @@ apps:
     internalUrl: "http://sds-neuvector-01.hmcts.net"
     userAssignmentRequired: true
     identifierUrls:
-        - "https://sds-neuvector-01.hmcts.net"
-        - "https://sds-neuvector-01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-01.hmcts.net"
+      - "https://sds-neuvector-01.hmcts.net/token_auth_server"
     redirectUrls:
-        - "https://sds-neuvector-01.hmcts.net"
-        - "https://sds-neuvector-01.hmcts.net/token_auth_server"
+      - "https://sds-neuvector-01.hmcts.net"
+      - "https://sds-neuvector-01.hmcts.net/token_auth_server"
     preferredSingleSignOnMode: "saml"
     appRoleAssignments:
       - DTS Platform Operations
     graphApiPermissions:
-        - "User.Read.All"
-        - "Group.Read.All"
-        - "People.Read.All"
-        - "offline_access"
-        - "email"
-        - "openid"
-        - "profile"
+      - "User.Read.All"
+      - "Group.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
     groupMembershipClaims: "SecurityGroup"
     tls:
       key_vault_name: "acmedtssdsptl"
       name: "wildcard-hmcts-net"
     hideApp: false
+  - name: "Cactus web - Dev"
+    externalUrl: "https://cactus.dev.apps.hmcts.net"
+    internalUrl: "https://cactus-dev-web-wa01.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Cactususers-dev
+      - cactususers
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-dev-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus web - Staging"
+    externalUrl: "https://cactus.staging.apps.hmcts.net"
+    internalUrl: "https://cactus-staging-web-wa01.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS Cactususers-stg
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-staging-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus web - Production"
+    externalUrl: "https://cactus.apps.hmcts.net"
+    internalUrl: "https://cactus-prod-web-wa01.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Dev"
+    externalUrl: "https://cactus-admin.dev.apps.hmcts.net"
+    internalUrl: "https://cactus-dev-admin-wa02.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS CactusAdmins-dev
+      - CactusAdmins
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-dev-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Staging"
+    externalUrl: "https://cactus-admin.staging.apps.hmcts.net"
+    internalUrl: "https://cactus-staging-admin-wa02.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+      - DTS CactusAdmins-stg
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-staging-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "Cactus admin - Production"
+    externalUrl: "https://cactus-admin.apps.hmcts.net"
+    internalUrl: "https://cactus-prod-admin-wa02.azurewebsites.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/cactus.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS Platform Operations
+      - DTS CFT Developers
+    graphApiPermissions:
+      - "User.Read"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-apps-hmcts-net"
+    preferredSingleSignOnMode: "saml"
+  - name: "TF Plan Viewer - PTL"
+    externalUrl: "https://tfplan-viewer.hmcts.net"
+    internalUrl: "https://tfplan-viewer.platform.hmcts.net"
+    redirectUrls:
+      - "https://tfplan-viewer.hmcts.net"
+    logoUrl: https://raw.githubusercontent.com/hmcts/azure-app-proxy/main/logos/terraform.png
+    userAssignmentRequired: false
+    appRoleAssignments:
+      - DTS CFT Developers
+      - DTS SDS Developers
+    graphApiPermissions:
+      - "User.Read.All"
+      - "User.Read"
+      - "Group.Read.All"
+      - "GroupMember.Read.All"
+      - "People.Read.All"
+      - "offline_access"
+      - "email"
+      - "openid"
+      - "profile"
+    tls:
+      key_vault_name: "acmedtscftptlintsvc"
+      name: "wildcard-hmcts-net"

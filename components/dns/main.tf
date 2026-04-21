@@ -15,7 +15,7 @@ locals {
 
 
 resource "azurerm_dns_cname_record" "this" {
-  for_each = { for record in local.cname_records : record.name => record }
+  for_each = { for record in local.cname_records : "${record.name}-${record.zone_name}" => record }
 
   name                = each.value.name
   zone_name           = each.value.zone_name
