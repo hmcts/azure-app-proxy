@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.14.0"
+  backend "azurerm" {}
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 4.27.0"
+    }
+  }
+}
+
 provider "azurerm" {
   features {}
   //Reform-CFT-Mgmt
@@ -25,15 +36,4 @@ provider "azurerm" {
   features {}
   subscription_id = var.env == "prod" || var.env == "production" || var.env == "mgmt" ? "8999dec3-0104-4a27-94ee-6588559729d1" : var.env == "sbox" || var.env == "sandbox" ? "bf308a5c-0624-4334-8ff8-8dca9fd43783" : "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 
-}
-
-terraform {
-  backend "azurerm" {}
-  required_version = "1.14."
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "= 4.68.0"
-    }
-  }
 }
