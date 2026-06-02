@@ -4,6 +4,9 @@ resource "azurerm_key_vault" "app_proxy_kv" {
   resource_group_name = azurerm_resource_group.this.name
   tenant_id           = data.azurerm_client_config.this.tenant_id
   sku_name            = "standard"
+
+  purge_protection_enabled   = true
+  soft_delete_retention_days = 90 
 }
 
 data "azuread_service_principal" "aad_application" {
