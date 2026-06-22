@@ -50,11 +50,11 @@ If a ticket is raised about services behind app-proxy not working, then login to
 
 First, you may need to type `15` on the sconfig screen to get to powershell. Then run:
 
-`get-service WAPSVC`
+`get-service WAPCSvc`
 
 If it's not running, run:
 
-`start-service WAPSVC`
+`start-service WAPCSvc`
 
 A scheduled task has been created to check the status of this service every fifteen minutes and start it if it's not running.
 
