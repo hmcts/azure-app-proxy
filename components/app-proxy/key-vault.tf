@@ -6,7 +6,15 @@ resource "azurerm_key_vault" "app_proxy_kv" {
   sku_name            = "standard"
 
   purge_protection_enabled   = true
-  soft_delete_retention_days = 90 
+  soft_delete_retention_days = 90
+
+  # Preserve the vault's existing tag set so secret reads can complete during plan.
+  tags = {
+    application  = module.tags.common_tags["application"]
+    builtFrom    = module.tags.common_tags["builtFrom"]
+    businessArea = module.tags.common_tags["businessArea"]
+    environment  = module.tags.common_tags["environment"]
+  }
 }
 
 data "azuread_service_principal" "aad_application" {
