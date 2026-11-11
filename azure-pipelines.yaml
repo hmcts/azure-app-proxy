@@ -32,7 +32,7 @@ variables:
   - name: terraformInitSubscription
     value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
   - name: registerServiceConnection
-    value: GA
+    value: GA-Prod-Tenant
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 parameters:
@@ -45,7 +45,7 @@ parameters:
 
   - name: kvConnectedServiceName
     type: string
-    default: DCD-CFT-Sandbox
+    default: DCD-CFT-Sandbox-WIF
 
   - name: environment_components
     type: object
@@ -53,12 +53,12 @@ parameters:
     - deployment: 'app_proxy_infra'
       environment: 'mgmt'
       component: 'app-proxy'
-      service_connection: 'Reform-CFT-Mgmt'
+      service_connection: 'Reform-CFT-Mgmt-WIF'
       dependsOn: 'Precheck'
     - deployment: 'dns_registration'
       environment: 'mgmt'
       component: 'dns'
-      service_connection: 'Reform-CFT-Mgmt'
+      service_connection: 'Reform-CFT-Mgmt-WIF'
       dependsOn: 'app_proxy_infra'
 
 stages:
@@ -75,6 +75,7 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: ${{ parameters.kvConnectedServiceName }}
+              kvConnectedServiceName: ${{ parameters.kvConnectedServiceName }}
               overrideAction: ${{ parameters.overrideAction }}
 
   - ${{ each deployment in parameters.environment_components }}:
@@ -91,6 +92,7 @@ stages:
               environment: ${{ deployment.environment }}
               component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}
+              kvConnectedServiceName: ${{ parameters.kvConnectedServiceName }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               
